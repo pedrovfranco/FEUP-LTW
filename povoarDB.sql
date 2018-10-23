@@ -1,0 +1,1 @@
+INSERT INTO User (idUser, username, password, age, mail) VALUES (1, conaBoaLover69, perere, 20, mail@mail.com);
