@@ -4,23 +4,31 @@ DROP TABLE IF EXISTS Comment;
 
 CREATE TABLE User (
     idUser      INTEGER  NOT NULL PRIMARY KEY,
+
     username	VARCHAR (100) NOT NULL,
 	password	VARCHAR (100) NOT NULL,
 	age 		INTEGER NOT NULL,
-	mail		VARCHAR (100) NOT NULL
+	email		VARCHAR (100) NOT NULL
 	
 );
 
 CREATE TABLE Thread (
 	idThread	INTEGER NOT NULL PRIMARY KEY,
-	Title 		VARCHAR (100) NOT NULL
+	idUser		INTEGER REFERENCES User (idUser),
+
+	Title 		VARCHAR (100) NOT NULL,
+
+	Link		VARCHAR NOT NULL
 
 );
 
 CREATE TABLE Comment (
 	idComment	INTEGER NOT NULL PRIMARY KEY,
+	idUser		INTEGER REFERENCES User (idUser),
 	idThread 	INTEGER REFERENCES Thread (idThread),
+
 	Text		VARCHAR (500) NOT NULL,
-	Upvotesq	INTEGER,
+
+	Upvotes		INTEGER,
 	Downvotes	INTEGER
 );
