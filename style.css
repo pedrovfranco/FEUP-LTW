@@ -1,10 +1,21 @@
 header {
+  text-align: center;
   background-color: blue;
-  text-decoration-color: red;
+  color: white;
 }
 
 
-h1 {
-  background-color: blue;
-  text-decoration-color: red;
+h1 > a {
+  color: white;
+}
+
+h2 > a {
+  color: white;
+}
+
+#signup > a
+{
+  text-align: justify;
+  background-color: white;
+  color: black;
 }
