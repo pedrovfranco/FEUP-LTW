@@ -1,21 +1,86 @@
-header {
-  text-align: center;
-  background-color: blue;
-  color: white;
+
+*
+{
+  margin: 0;
+  padding: 0;
 }
 
+header {
+   position: relative;
+   top: -20px;
+   bottom: 20px;
+   background-image: url(eder.jpg);
+   height: 720px;
+   background-size: cover;
+   background-position: center;
+   text-align: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
 
 h1 > a {
   color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 100px;
+  position: relative;
+  right: -300px;
+  top: 50px;
+  text-decoration: none;
 }
 
 h2 > a {
   color: white;
+  font-size: 50px;
+  position: relative;
+  top: 450px;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
 }
 
-#signup > a
+.signup
 {
-  text-align: justify;
-  background-color: white;
-  color: black;
+  float: left;
+  list-style: none;
+}
+
+.signup li
+{
+  display: inline-table;
+}
+
+.signup li a
+{
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+  padding: 20px 30px;
+  position: relative;
+  left: 310px;
+  top: -698px;
+}
+
+.signup li.active a{
+  border: 2px solid white;
+}
+/*
+.buttons
+{
+  margin-top: 30px;
+  margin-left:
+}
+*/
+footer
+{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 700px;
+    bottom: 0px;
+    background-color: black;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    color: white;
 }
