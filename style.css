@@ -1,4 +1,4 @@
-
+/*  INDEX */
 *
 {
   margin: 0;
@@ -83,4 +83,57 @@ footer
     font-family: "Times New Roman", Times, serif;
     font-size: 20px;
     color: white;
+}
+
+/* LOGIN */
+.login
+{
+  background-image: url(who1.jpg);
+  height: 700px;
+  width: 1600px;
+  background-size: cover;
+  background-position:top;
+}
+
+.login h1
+{
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  font-size: 50px;
+  position:fixed;
+  left: 960px;
+  top: 170px;
+}
+
+.login h2
+{
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  font-size: 30px;
+  position:fixed;
+  left: 850px;
+  top: 250px;
+}
+
+.login input[type=text] {
+ position: fixed;
+ top: 300px;
+ left: 950px;
+}
+
+.login input[type=password] {
+ position: fixed;
+ top: 350px;
+ left: 950px;
+}
+
+.login input[type="submit"]
+{
+  background-color: yellow;
+  position: fixed;
+  top: 400px;
+  left: 955px;
+  width: 10%;
 }
