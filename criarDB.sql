@@ -5,11 +5,10 @@ DROP TABLE IF EXISTS Comment;
 CREATE TABLE User (
     idUser      INTEGER  NOT NULL PRIMARY KEY,
 
-    username	VARCHAR (100) NOT NULL,
+    username	VARCHAR (50) NOT NULL UNIQUE,
 	password	VARCHAR NOT NULL,
 	age 		INTEGER NOT NULL,
-	email		VARCHAR (100) NOT NULL
-	
+	email		VARCHAR (100) NOT NULL UNIQUE
 );
 
 CREATE TABLE Thread (
@@ -18,8 +17,10 @@ CREATE TABLE Thread (
 
 	Title 		VARCHAR (100) NOT NULL,
 
-	Link		VARCHAR NOT NULL
+	Link		VARCHAR NOT NULL,
 
+	Upvotes		INTEGER,
+	Downvotes	INTEGER
 );
 
 CREATE TABLE Comment (
