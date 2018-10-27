@@ -1,22 +1,7 @@
 <?php
-
-	function displayUsers($dbh)
-	{
-		$query1 = $dbh->prepare('SELECT * FROM User');
-		$query1->execute();
-		
-		while ($row = $query1->fetch())
-		{
-			$a = $row['idUser'];
-			$b = $row['username'];
-			$c = $row['password'];
-			$d = $row['age'];
-			$e = $row['email'];
-
-			echo "$a | $b | $c | $d | $e<br>";
-		}
-	}
 	
+	include_once("utilities.php");
+
 	ini_set('display_errors', 1);
 
 	$username = $_POST['username'];
@@ -28,7 +13,9 @@
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 
 	$query1 = $dbh->prepare('SELECT * FROM User WHERE username = ?');
-	if ($query1->execute(array($username)) > 0)
+	$query1->execute(array($username);
+
+	if (count($query1) > 0)
 	{
 		echo "Username already taken!<br>";
 		sleep(3);
@@ -37,7 +24,9 @@
 	}
 
 	$query2 = $dbh->prepare('SELECT * FROM User WHERE email = ?');
-	if ($query2->execute(array($email)) > 0)
+	$query2->execute(array($email));
+
+	if (count($query2->fetchAll()) > 0)
 	{
 		echo "Email already taken!<br>";
 		sleep(3);
