@@ -6,16 +6,16 @@
 }
 
 header {
-   position: relative;
-   top: -20px;
-   bottom: 20px;
-   background-image: url(eder.jpg);
-   height: 720px;
-   background-size: cover;
-   background-position: center;
-   text-align: center;
-   background-repeat: no-repeat;
-   background-attachment: fixed;
+ position: relative;
+ top: 0px;
+ bottom: 0px;
+ background-image: url(eder.jpg);
+ height: 780px;
+ background-size: cover;
+ background-position: center;
+ text-align: center;
+ background-repeat: no-repeat;
+ background-attachment: fixed;
 }
 
 h1 > a {
@@ -73,54 +73,34 @@ h2 > a {
 */
 footer
 {
-    position: fixed;
-    left: 0px;
-    right: 0px;
-    top: 700px;
-    bottom: 0px;
-    background-color: black;
-    text-align: center;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 20px;
-    color: white;
-}
-/* REGISTER */
-
-.register
-{
-  background-image: url(handshake.jpg);
-  height: 700px;
-  width: 1536px;
-  background-size: cover;
-  background-position:top;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 780px;
+  bottom: 0px;
+  background-color: black;
   text-align: center;
-  color: white;
   font-family: "Times New Roman", Times, serif;
   font-size: 20px;
-}
-
-.register h1
-{
-  font-size: 50px;
-}
-
-.register input[type="submit"]
-{
-  background-color: yellow;
-  width: 10%;
-  position: fixed;
-  left: 688px;
-  top: 250px;
+  color: white;
 }
 
 /* LOGIN */
 .login
 {
-  background-image: url(who1.jpg);
-  height: 700px;
-  width: 1536px;
+  position: absolute;
+  background-image: url(who2.jpg);
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 100%;
+  vertical-align : top;
   background-size: cover;
-  background-position:top;
+  background-position: center;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .login h1

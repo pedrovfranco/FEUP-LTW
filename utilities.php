@@ -23,9 +23,27 @@
 
 		$login->execute(array($username, $password));
 		$result = $login->fetchAll();
-		$count = count($result);
 
-		return ($count == 1);
+		return $result;
 	}
 
+	function loggedIn()
+	{   			
+		$session = session_start();
+		if (!$session)
+		{
+			echo "Session starting failed!<br>";
+			exit(1);
+		}
+
+		if (isset($_SESSION['id']))
+		{
+			$id = $_SESSION['id'];
+			return $id;
+		}
+		else
+		{
+			return -1;
+		}
+	}
 ?>

@@ -2,6 +2,8 @@
 
 	ini_set('display_errors', 1);
 
+	include_once("utilities.php");
+
 	$session = session_start();
 	if (!$session)
 	{
@@ -14,18 +16,14 @@
     	
 	$dbh = new PDO('sqlite:database.db');
 	
-	$login = $dbh->prepare("SELECT * FROM User WHERE username = ? AND password = ?");
+	$results = userExists($dbh, $username, $hash);
 
-	$login->execute(array($username, $hash));
-	$result = $login->fetchAll();
-	$count = count($result);
-
-	if ($count == 1)
+	if (count($results) == 1)
 	{
 		echo "Login sucessful!<br>";
-		$_SESSION['id'] = $result[0]['idUser'];
+		$_SESSION['id'] = $results[0]['idUser'];
 	}
-	else if ($count == 0)
+	else if (count($results) == 0)
 	{
 		echo "Login failed!<br>";
 	}
