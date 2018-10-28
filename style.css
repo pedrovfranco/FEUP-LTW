@@ -64,13 +64,35 @@ h2 > a {
 .signup li.active a{
   border: 2px solid white;
 }
-/*
-.buttons
+
+.register
 {
-  margin-top: 30px;
-  margin-left:
+  background-image: url(handshake.jpg);
+  height: 800px;
+  width: 100%;
+  background-size: cover;
+  background-position:top;
+  text-align: center;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
 }
-*/
+
+.register h1
+{
+  font-size: 50px;
+}
+
+.register input[type="submit"]
+{
+  background-color: yellow;
+  width: 10%;
+  /*position: fixed;*/
+  text-align: center;
+  /*top: 260px;*/
+  /*left : 45%;*/
+}
+
 footer
 {
   position: fixed;
