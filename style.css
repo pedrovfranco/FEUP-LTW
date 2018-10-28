@@ -84,13 +84,41 @@ footer
     font-size: 20px;
     color: white;
 }
+/* REGISTER */
+
+.register
+{
+  background-image: url(handshake.jpg);
+  height: 700px;
+  width: 1536px;
+  background-size: cover;
+  background-position:top;
+  text-align: center;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+
+.register h1
+{
+  font-size: 50px;
+}
+
+.register input[type="submit"]
+{
+  background-color: yellow;
+  width: 10%;
+  position: fixed;
+  left: 688px;
+  top: 250px;
+}
 
 /* LOGIN */
 .login
 {
   background-image: url(who1.jpg);
   height: 700px;
-  width: 1600px;
+  width: 1536px;
   background-size: cover;
   background-position:top;
 }
