@@ -7,4 +7,4 @@
 	$dbh = new PDO('sqlite:database.db');
 
 	displayUsers($dbh);
-?>
+         
