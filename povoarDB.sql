@@ -3,6 +3,5 @@ INSERT INTO User VALUES (NULL, "batosta", "35389f6ea37669ddb95dff9ed53f491aad247
 
 
 
-INSERT INTO Thread VALUES (NULL, NULL, "PERERE", "cona", 0, 0);
 -- batosta420
 -- gatotribos0599

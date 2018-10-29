@@ -22,13 +22,18 @@
 	{
 		echo "Login sucessful!<br>";
 		$_SESSION['id'] = $results[0]['idUser'];
+		echo "<br><a href=\"index.html\">Go Back</a> </li>";
 	}
 	else if (count($results) == 0)
 	{
 		echo "Login failed!<br>";
+		echo "<br><a href=\"register.html\">Go Back</a> </li>";
 	}
 	else
 	{
 		echo "Database error!<br>";
+		echo "<br><a href=\"register.html\">Go Back</a> </li>";
 	}
+
+
 ?>

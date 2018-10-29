@@ -15,28 +15,22 @@
 		<ul class="signup">
 
 			<?php
-				include("utilities.php");
+				include_only("index.php");
 
-				$id = loggedIn();
-
-				echo "$id";
-
-				if ($id == -1)
-				{
-			?>
-					<li class="active"> <a href="register.html">Register</a> </li>
-					<li class="active"> <a href="login.html">Login</a> </li>
-			<?php
-				}
-
+				index();
 			?>
 
-			<!-- <li class="active"> <a href="register.html">Register</a> </li>
-			<li class="active"> <a href="login.html">Login</a> </li> -->
+			<li class="active"> <a href="register.html">Register</a> </li>
+			<li class="active"> <a href="login.html">Login</a> </li>
 			<li class="active"> <a href="about.html">About</a> </li>
 
 		</ul>
 	</div>
+
+	<form class="postButton" action="post.html" method="get">
+		<input type="submit" value="Create Post">
+	</form>
+
 <!--	<div class="buttons">
 		<a href="" class="btn1"> Best goals and skills </a>
 		<a href="" class="btn2"> Best tackles </a>
