@@ -13,6 +13,13 @@
 	</header>
 	<div class="menu">
 		<ul class="signup">
+
+			<?php
+				include_only("index.php");
+
+				index();
+			?>
+
 			<li class="active"> <a href="register.html">Register</a> </li>
 			<li class="active"> <a href="login.html">Login</a> </li>
 			<li class="active"> <a href="about.html">About</a> </li>
@@ -24,24 +31,8 @@
 		<input type="submit" value="Create Post">
 	</form>
 
-	<br><br><br>
-
 	<div>
-		<?php
-
-			include_once('utilities.php');
-
-			ini_set('display_errors', 1);
-
-			$dbh = new PDO('sqlite:database.db');
-
-			$query = $dbh->prepare('SELECT * from Post');
-
-			$status = $query->execute();
-
-			echo "$status";
-
-			echo '<li class="active"> <a href="about.html">About</a> </li>';
+		<?php include('showPosts.php');	?>
 		
 	</div>
 
