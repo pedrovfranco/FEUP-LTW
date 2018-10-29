@@ -9,17 +9,10 @@
  <body>
 	<header>
 		<h1><a href="index.html">The 12th Player</a></h1>
-		<h2><a href="index.html">Welcome to our site ! </a></h2>
+		<!-- <h2><a href="index.html">Welcome to our site ! </a></h2> -->
 	</header>
 	<div class="menu">
 		<ul class="signup">
-
-			<?php
-				include_only("index.php");
-
-				index();
-			?>
-
 			<li class="active"> <a href="register.html">Register</a> </li>
 			<li class="active"> <a href="login.html">Login</a> </li>
 			<li class="active"> <a href="about.html">About</a> </li>
@@ -27,9 +20,30 @@
 		</ul>
 	</div>
 
-	<form class="postButton" action="post.html" method="get">
+	<form class="postButton" action="indextopost.php">
 		<input type="submit" value="Create Post">
 	</form>
+
+	<br><br><br>
+
+	<div>
+		<?php
+
+			include_once('utilities.php');
+
+			ini_set('display_errors', 1);
+
+			$dbh = new PDO('sqlite:database.db');
+
+			$query = $dbh->prepare('SELECT * from Post');
+
+			$status = $query->execute();
+
+			echo "$status";
+
+			echo '<li class="active"> <a href="about.html">About</a> </li>';
+		
+	</div>
 
 <!--	<div class="buttons">
 		<a href="" class="btn1"> Best goals and skills </a>

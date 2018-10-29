@@ -46,4 +46,21 @@
 			return -1;
 		}
 	}
+
+	function printConsole($data)
+	{
+	    $output = $data;
+	    if ( is_array( $output ) )
+	        $output = implode( ',', $output);
+
+	    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+	}
+
+	function console_log($data)
+	{
+	  echo '<script>';
+	  echo 'console.log('. json_encode( $data ) .')';
+	  echo '</script>';
+	}
+
 ?>

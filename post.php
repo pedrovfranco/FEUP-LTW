@@ -8,13 +8,14 @@
 	$link = $_POST['link'];
 	$text = $_POST['text'];
 
-	$date = 2;
+	$date = getdate()[0];
 
 	$idUser = loggedIn();
 
 	if ($idUser == -1)
 	{
-		echo "Must be logged in!";
+		echo "You must be logged in!";
+		echo "<br><a href=\"index.html\">Go Back</a> </li>";
 		exit(1);
 	}
 
@@ -39,4 +40,5 @@
 	else
 		echo "Post sucessful!<br>";
 
+	echo "<br><a href=\"index.html\">Go Back</a> </li>";
 ?>

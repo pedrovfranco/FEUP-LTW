@@ -27,12 +27,12 @@
 	else if (count($results) == 0)
 	{
 		echo "Login failed!<br>";
-		echo "<br><a href=\"register.html\">Go Back</a> </li>";
+		echo "<br><a href=\"login.html\">Go Back</a> </li>";
 	}
 	else
 	{
 		echo "Database error!<br>";
-		echo "<br><a href=\"register.html\">Go Back</a> </li>";
+		echo "<br><a href=\"login.html\">Go Back</a> </li>";
 	}
 
 
