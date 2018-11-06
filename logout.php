@@ -15,4 +15,6 @@
 		echo "Session destroying failed!<br>";
 		exit(1);
 	}
+
+	header('Location: index.html');
 ?>

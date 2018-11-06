@@ -10,16 +10,16 @@
 	<h1>Register</h1>
 	<form action="register.php" method="post">
 	  Username:<br>
-	  <input type="text" name="username" value="">
+	  <input type="text" name="username" maxlength="50" value="" required>
 	  <br>
 	  Password:<br>
-	  <input type="password" name="password" value="">
+	  <input type="password" name="password" value="" required>
 	  <br>
 	  E-mail:<br>
-	  <input type="email" name="email" value="">
+	  <input type="email" name="email" value="" required>
 	  <br>
 	  Age:<br>
-	  <input type="number" min="13" max="420" name="age" value="">
+	  <input type="number" min="13" max="420" name="age" value="" required>
 	  <br>
 	  <br>
 	  <input type="submit" value="Register">

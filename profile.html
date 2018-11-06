@@ -11,35 +11,51 @@
 		<h1>Profile</h1>
 		<h2> Edit your setting ! </h2>
 
-		<form action="register.php" method="post">
-	  Username:<br>
-	  <input type="text" name="username" value="">
-	  <br>
-	  Password:<br>
-	  <input type="password" name="password" value="">
-	  <br>
-	  E-mail:<br>
-	  <input type="email" name="email" value="">
-	  <br>
-	  Age:<br>
-	  <input type="number" min="13" max="420" name="age" value="">
-	  <br>
-	  <br>
-	  <input type="image" src="1.png" alt="Submit" width="48" height="48">
-	  <br>
-	  <input type="image" src="2.png" alt="Submit" width="48" height="48">
-	  <br>
-	  <input type="image" src="3.png" alt="Submit" width="48" height="48">
-	  <br>
-	  <input type="image" src="4.png" alt="Submit" width="48" height="48">
-	  <br>
-	  <input type="image" src="5.png" alt="Submit" width="48" height="48">
+		<form action="editprofile.php" method="post">
+			Username:<br>
+			<input type="text" name="username" value="" required>
+			<br>
+			Password:<br>
+			<input type="password" name="password" value="" required>
+			<br>
+			E-mail:<br>
+			<input type="email" name="email" value="" required>
+			<br>
+			Age:<br>
+			<input type="number" min="13" max="420" name="age" value="" required>
+			<br>
+			<br>
+			<label class="big1">
+				<img src="camisolas/benfica.png" alt="Benfica" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="1">
+			</label>
+			<label class="big2">
+				<img src="camisolas/porto.jpg" alt="Porto" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="2">
+			</label>
+			<label class="big3">
+				<img src="camisolas/sporting.png" alt="Sporting" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="3">
+			</label>
+			<label class="big4">
+				<img src="camisolas/braga.jpg" alt="Braga" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="4">
+			</label>
+			<label class="big5">
+				<img src="camisolas/guimaraes.png" alt="Guimarães" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="5">
+			</label>
 
-	</form>
+			<br>
+			<br>
+			<input type="submit" value="Edit profile">
+
+		</form>
 	</div>
-	<footer>
-		<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
-	</footer>
+
+<footer>
+	<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
+</footer>
 
 </body>
 </html>
