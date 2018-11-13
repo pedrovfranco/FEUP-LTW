@@ -20,9 +20,9 @@
 
 	if (count($results) == 1)
 	{
-		echo "Login sucessful!<br>";
 		$_SESSION['id'] = $results[0]['idUser'];
-		echo "<br><a href=\"index.html\">Go Back</a> </li>";
+		header("Location: index.php");
+		die();
 	}
 	else if (count($results) == 0)
 	{

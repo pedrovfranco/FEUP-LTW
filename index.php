@@ -1,3 +1,26 @@
+<?php
+  	include_once("utilities.php");
+
+	ini_set('display_errors', 1);
+
+	$dbh = new PDO('sqlite:database.db');
+	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+	$query = $dbh->prepare('SELECT * from Post');
+
+	$status = $query->execute();
+
+	if (!$status)
+	{
+	    echo "\nPDO::errorInfo():\n";
+	    print_r($dbh->errorInfo());
+
+	    echo "Error!<br>";
+	}
+
+	$posts = $query->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,32 +35,40 @@
 		<!-- <h2><a href="index.html">Welcome to our site ! </a></h2> -->
 	</header>
 
-	<?php
-		include_once("utilities.php");
-		$id = loggedIn();
-		if ($id == -1) : ?>
-			<div class="menu">
-				<ul class="signup">
+	<div class="menu">
+		<ul>
+			<?php
+				$id = loggedIn();
+				if ($id == -1) : ?>
 					<li class="active"> <a href="register.html">Register</a> </li>
 					<li class="active"> <a href="login.html">Login</a> </li>
 					<li class="active"> <a href="about.html">About</a> </li>
-				</ul>
-			</div>
-	<?php else : ?>
-		<div class="menu">
-			<ul class="signup">
+			<?php else : ?>
 				<li class="active"> <a href="logout.php">Logout</a> </li>
 				<li class="active"> <a href="about.html">About</a> </li>
 				<li class="active"> <a href="profile.html">Profile</a> </li>
-			</ul>
-		</div>
+		</ul>
+	</div>
 
 		<form class="postButton" action="indextopost.php">
 			<input type="submit" value="Create Post">
 		</form>
 	<?php endif; ?>
 
-	
+    <section id="posts">
+      <?php foreach($posts as $post) { ?>
+      <article>
+        <header>
+          <h1>
+            <a href="postPage.php?id=<?=$post['idPost']?>"><?=$post['Title']?></a>
+          </h1>
+        </header>
+        <footer>
+          <span class="date"><?=date('Y-m-d H:i:s', $post['Date']);?></span>
+        </footer>
+      </article>
+      <?php } ?>
+    </section>
 
 <!--	<div class="buttons">
 		<a href="" class="btn1"> Best goals and skills </a>
