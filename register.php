@@ -5,7 +5,7 @@
 	ini_set('display_errors', 1);
 
 	$username = $_POST['username'];
-	$hash = hash('sha256', $_POST['password']);
+	$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	$email = $_POST['email'];
 	$age = $_POST['age'];
 

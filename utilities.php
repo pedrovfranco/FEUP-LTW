@@ -19,12 +19,20 @@
 
 	function userExists($dbh, $username, $password)
 	{   			
-		$login = $dbh->prepare("SELECT * FROM User WHERE username = ? AND password = ?");
+		$login = $dbh->prepare("SELECT * FROM User WHERE username = ?");
 
-		$login->execute(array($username, $password));
+		$login->execute(array($username));
+		
 		$result = $login->fetchAll();
 
-		return $result;
+		foreach ($result as $row)
+		{
+			if (password_verify($password, $row['password']))
+				return $row['idUser'];
+
+		}
+
+		return -1;
 	}
 
 	function loggedIn()

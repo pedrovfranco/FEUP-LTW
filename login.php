@@ -4,34 +4,26 @@
 
 	include_once("utilities.php");
 
-	$session = session_start();
-	if (!$session)
+	if (loggedIn() != -1)
 	{
-		echo "Session starting failed!<br>";
+		echo "You are already logged in!<br>";
+		echo "<br><a href=\"login.html\">Go Back</a> </li>";
 		exit(1);
 	}
 
-	$username = $_POST['username'];
-    $hash = hash('sha256', $_POST['password']);
-    	
 	$dbh = new PDO('sqlite:database.db');
 	
-	$results = userExists($dbh, $username, $hash);
+	$id = userExists($dbh, $_POST['username'], $_POST['password']);
 
-	if (count($results) == 1)
+	if ($id != -1)
 	{
-		$_SESSION['id'] = $results[0]['idUser'];
+		$_SESSION['id'] = $id;
 		header("Location: index.php");
 		die();
 	}
-	else if (count($results) == 0)
-	{
-		echo "Login failed!<br>";
-		echo "<br><a href=\"login.html\">Go Back</a> </li>";
-	}
 	else
 	{
-		echo "Database error!<br>";
+		echo "Login failed!<br>";
 		echo "<br><a href=\"login.html\">Go Back</a> </li>";
 	}
 
