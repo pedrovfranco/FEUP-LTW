@@ -55,7 +55,7 @@
 		</form>
 	<?php endif; ?>
 
-    <section id="posts">
+    <div id="posts">
       <?php foreach($posts as $post) { ?>
       <article>
         <header>

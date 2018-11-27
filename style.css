@@ -216,8 +216,34 @@ footer
 	height: 100%;
 }
 
+#posts
+{
+	display: grid;
+
+	grid-template-columns: 100%;
+	grid-template-rows: 10%;
+	grid-gap: 10px;
+}
+
+#posts > article	
+{
+	
+	padding-left: 10%;
+}
+
 #posts > article >header > h1 > a
 {
 	font-size: 30px;
-	right: 10em;
+	/*right: 10em;*/
+	text-align: center;
 }
+
+
+
+#post > article >header > h1 > a
+{
+	font-size: 30px;
+	/*right: 10em;*/
+	text-align: center;
+}
+
