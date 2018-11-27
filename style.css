@@ -69,7 +69,7 @@ h2 > a {
 .register
 {
 	background-image: url(handshake.jpg);
-	height: 780px;
+	height: 100%;
 	width: 100%;
 	background-size: cover;
 	background-position:top;
@@ -126,11 +126,8 @@ footer
 {
 	position: absolute;
 	background-image: url(who2.jpg);
-	top: 0px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
 	height: 100%;
+	width: 100%;
 	vertical-align : top;
 	background-size: cover;
 	background-position: center;
