@@ -68,9 +68,9 @@ h2 > a {
 
 .postIndex {
 	position: relative;
-	bottom: 227px;
-	left: 500px;
-	padding: -300px;
+	bottom: 215px;
+	left: 48px;
+	padding: -160px;
 
 }
 
@@ -220,10 +220,11 @@ footer
 
 .postButton [type="submit"]
 {
-	background-color: white;
+	background-color: yellow;
+	color: black;
 	position: fixed;
-	top: 190px;
-	left: 1300px;
+	top: 590px;
+	left: 800px;
 	width: 15%;
 	height : 10%;
 }
@@ -291,7 +292,7 @@ footer
 .postItself
 {
 	position: absolute;
-	background-image: url(tactics2.jpg);
+	background-image: url(tactics2.png);
 	height: 100%;
 	width: 100%;
 	background-size: cover;
@@ -306,12 +307,16 @@ footer
 	font-size: 300%;
 	color: white;
 	margin-top: 3%;
+	margin-left: 45%;
 }
 
 .postItself form
 {
+	font-size: 200%;
+	text-align: left;
 	margin-top: 5%;
 	color: white;
+	margin-left: 60%;
 }
 
 .postItself input[type="text"]
@@ -323,7 +328,7 @@ footer
 	color: white;
 	width: 20%;
 	position: fixed;
-	text-align: center;
+	text-align: left;
 }
 
 .postItself input[type="textarea"]
@@ -335,7 +340,12 @@ footer
 	color: white;
 	width: 20%;
 	position: fixed;
-	text-align: center;
+	text-align: left;
+}
+
+.postItself input[type="submit"]
+{
+	background-color: yellow;
 }
 
 /*POSTS*/

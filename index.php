@@ -48,41 +48,24 @@
 				<li class="active"> <a href="about.html">About</a> </li>
 				<li class="active"> <a href="profile.html">Profile</a> </li>
 		</ul>
-	</div>
-
-		<form class="postButton" action="indextopost.php">
+    <form class="postButton" action="indextopost.php">
 			<input type="submit" value="Create Post">
 		</form>
-	<?php endif; ?>
+    <?php endif; ?>
 
-    <!-- <div id="posts">
-      <?php foreach($posts as $post) { ?>
-      <article>
-        <header>
-          <h1>
-            <a href="postPage.php?id=<?=$post['idPost']?>"><?=$post['Title']?></a>
-          </h1>
-        </header>
-        <footer>
-          <span class="date"><?=date('Y-m-d H:i:s', $post['Date']);?></span>
-        </footer>
-      </article>
-      <?php } ?>
-    </section> -->
+  </div>
 
-<!--	<div class="buttons">
-		<a href="" class="btn1"> Best goals and skills </a>
-		<a href="" class="btn2"> Best tackles </a>
-	</div>-->
+
+
+  <div class="postIndex">
+    <a href="POSTS.html">
+      <img src="./posts.png">
+    </a>
+  </div>
 	<footer>
 		<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
 	</footer>
 
-  <div class="postIndex">
-  <a href="POSTS.html">
-    <img src="./posts.png">
-  </a>
-</div>
 
 <!--	<div class="topInterface">
 	  <a href="#home">Home</a>

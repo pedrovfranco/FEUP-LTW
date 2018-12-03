@@ -88,6 +88,25 @@
 		</div>
       <button class="submitButton">Submit a new post</button>
 
+      <!-- <div id="posts">
+        <?php foreach($posts as $post) { ?>
+        <article>
+          <header>
+            <h1>
+              <a href="postPage.php?id=<?=$post['idPost']?>"><?=$post['Title']?></a>
+            </h1>
+          </header>
+          <footer>
+            <span class="date"><?=date('Y-m-d H:i:s', $post['Date']);?></span>
+          </footer>
+        </article>
+        <?php } ?>
+      </section>
+
+      <div class="buttons">
+      <a href="" class="btn1"> Best goals and skills </a>
+      <a href="" class="btn2"> Best tackles </a>
+      </div> -->
        <!-- <div class='search-bar'>
 				<input type="text" placeholder="search" class="search">
 				<button class='search-button'>
