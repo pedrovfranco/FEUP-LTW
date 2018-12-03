@@ -31,12 +31,12 @@
 </head>
  <body>
 	<header>
-		<h1><a href="index.html">The 12th Player</a></h1>
+		<h1><a href="index.html">The 12th Player </a></h1>
 		<!-- <h2><a href="index.html">Welcome to our site ! </a></h2> -->
 	</header>
 
 	<div class="menu">
-		<ul>
+    <ul>
 			<?php
 				$id = loggedIn();
 				if ($id == -1) : ?>
@@ -55,7 +55,7 @@
 		</form>
 	<?php endif; ?>
 
-    <div id="posts">
+    <!-- <div id="posts">
       <?php foreach($posts as $post) { ?>
       <article>
         <header>
@@ -68,7 +68,7 @@
         </footer>
       </article>
       <?php } ?>
-    </section>
+    </section> -->
 
 <!--	<div class="buttons">
 		<a href="" class="btn1"> Best goals and skills </a>
@@ -77,6 +77,12 @@
 	<footer>
 		<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
 	</footer>
+
+  <div class="postIndex">
+  <a href="POSTS.html">
+    <img src="./posts.png">
+  </a>
+</div>
 
 <!--	<div class="topInterface">
 	  <a href="#home">Home</a>

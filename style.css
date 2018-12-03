@@ -16,6 +16,7 @@ header {
  text-align: center;
  background-repeat: no-repeat;
  background-attachment: scroll;
+ margin-bottom: -5%;
 }
 
 h1 > a {
@@ -58,11 +59,19 @@ h2 > a {
 	padding: 20px 30px;
 	position: relative;
 	left: 310px;
-	top: -730px;
+	top: -650px;
 }
 
 .menu > ul li.active a{
 	border: 2px solid white;
+}
+
+.postIndex {
+	position: relative;
+	bottom: 227px;
+	left: 500px;
+	padding: -300px;
+
 }
 
 /* REGISTER */
@@ -82,18 +91,16 @@ h2 > a {
 
 .register h1
 {
-	position: fixed;
-	left: 610px;
-	font-size: 50px;
+	text-align: center;
+	font-size: 500%;
 }
 
 .register form
 {
-	position: fixed;
-	top: 80px;
-	left: 610px;
-	font-size: 20px;
-	color: black;
+	text-align: center;
+	margin-top: 1.8%;
+	font-size: 130%;
+	color: white;
 
 }
 
@@ -101,10 +108,16 @@ h2 > a {
 {
 	background-color: yellow;
 	width: 10%;
-	position: fixed;
 	text-align: center;
+	margin-top: 7%;
+}
+
+.returnRegister
+{
+	align-items: center;
+	position: relative;
+	margin-left: 62%;
 	top: 420px;
-	left :625px;
 }
 
 footer
@@ -175,8 +188,16 @@ footer
 	background-color: yellow;
 	position: fixed;
 	top: 190px;
-	left: 1015px;
+	left: 1002.5px;
 	width: 10%;
+}
+
+.returnLogin
+{
+	align-items: center;
+	position: relative;
+	margin-left: 55.8%;
+	top: 230px;
 }
 
 /* PROFILE */
@@ -211,12 +232,39 @@ footer
 
 .about
 {
+	position: absolute;
 	background-image: url(room.png);
-	width: 100%;
+	background-size: cover;
 	height: 100%;
+		width: 100%;
+
 }
 
-#posts
+.about h1
+{
+	text-align: center;
+	color: black;
+	font-size: 200%;
+	margin-top: 41%;
+	margin-right: 3%;
+}
+
+.returnAbout
+{
+	align-items: center;
+	position: relative;
+	margin-left: 45%;
+	top: 20px;
+}
+
+/* #posts
+
+#posts > article >header > h1 > a
+{
+	font-size: 30px;
+	/*right: 10em;
+	text-align: center;
+}
 {
 	display: grid;
 
@@ -225,25 +273,218 @@ footer
 	grid-gap: 10px;
 }
 
-#posts > article	
+#posts > article
 {
-	
 	padding-left: 10%;
 }
 
-#posts > article >header > h1 > a
+
+ #post > article >header > h1 > a
 {
 	font-size: 30px;
-	/*right: 10em;*/
+	right: 10em;
+	text-align: center;
+}
+*/
+
+/*Single post (post.html/php)*/
+.postItself
+{
+	position: absolute;
+	background-image: url(tactics2.jpg);
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.postItself h1
+{
+	font-size: 300%;
+	color: white;
+	margin-top: 3%;
+}
+
+.postItself form
+{
+	margin-top: 5%;
+	color: white;
+}
+
+.postItself input[type="text"]
+{
+
+	align-items: left;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	width: 20%;
+	position: fixed;
 	text-align: center;
 }
 
-
-
-#post > article >header > h1 > a
+.postItself input[type="textarea"]
 {
-	font-size: 30px;
-	/*right: 10em;*/
+
+	align-items: left;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	width: 20%;
+	position: fixed;
 	text-align: center;
 }
 
+/*POSTS*/
+.posts {
+	display: grid;
+	grid-auto-rows: auto;
+}
+
+.postPage
+{
+	display:grid;
+	grid-auto-rows: auto;
+}
+
+.posts {
+	margin: 0;
+	padding: 0;
+	background-color: grey;
+	border-bottom: solid #5f99cf;
+	border-width: thin;
+	position: relative;
+	align-items: center;
+}
+
+.profileInPosts
+{
+	margin-top: -18%;
+}
+
+.profileInPosts ul li{
+		align-items: flex-end;
+		background-color: blue;
+		float: right;
+}
+
+
+.profileInPosts ul li a{
+		align-items: flex-end;
+		color: white;
+		background-color: blue;
+}
+
+.logo{
+	  margin-left: auto;
+    margin-right: auto;
+}
+
+.posts2 ul li a
+{
+	color: white;
+	font-size: 130%;
+}
+
+nav
+{
+	background-image: url(pt.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	border-bottom: solid;
+	border-color: black;
+	border-width:thick;
+}
+
+nav ul
+{
+	background-color: #333333;
+	margin: 0;
+	list-style: none;
+	display: block;
+	}
+
+nav ul li{
+	background-color: #333333;
+	float: left;
+	padding: 16px;
+	display: block;
+	display: inline-table;
+	border-right: solid black;
+	border-top: solid black;
+	border-bottom: solid black;
+}
+
+.submitButton
+{
+	background-color: black;
+	color: white;
+	width: 20%;
+	border: solid blue;
+	margin-left: 70%;
+	margin-top: 20%;
+}
+
+/* .backgroundTactics{
+	background-image: url(tactics.jpg);
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+} */
+
+.postPage
+{
+	margin-left: 10%;
+	margin-right: 70%;
+	display: grid;
+	grid-auto-rows: 100%;
+	background-color: grey;
+	z-index: 1;
+}
+
+.post-number {
+	margin-top: 2px;
+	font-size: 30px;
+	text-align: left;
+	color: blue;
+}
+
+/* .ball{
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+}
+
+.up{
+	transform: rotate(-135deg);
+}
+
+.down
+{
+	transform: rotate(45deg);
+} */
+
+.post-body
+{
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.post-title
+{
+	font-size: 22px;
+	margin-top: -10px;
+}
+
+.submitter
+{
+	color: white;
+	margin-top: 20%;
+}
