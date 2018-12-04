@@ -84,13 +84,14 @@ h2 > a {
 	background-position:top;
 	background-attachment: scroll;
 	text-align: center;
-	color: white;
 	font-family: "Times New Roman", Times, serif;
 	position: fixed;
+	color: black;
 }
 
 .register h1
 {
+	color: white;
 	text-align: center;
 	font-size: 500%;
 }
@@ -98,9 +99,9 @@ h2 > a {
 .register form
 {
 	text-align: center;
-	margin-top: 1.8%;
+	margin-top: 14%;
 	font-size: 130%;
-	color: white;
+	color: black;
 
 }
 
@@ -109,7 +110,7 @@ h2 > a {
 	background-color: yellow;
 	width: 10%;
 	text-align: center;
-	margin-top: 7%;
+	margin-top: 2%;
 }
 
 .returnRegister
@@ -192,33 +193,7 @@ footer
 	width: 10%;
 }
 
-.returnLogin
-{
-	align-items: center;
-	position: relative;
-	margin-left: 55.8%;
-	top: 230px;
-}
-
-/* PROFILE */
- .profile
- {
-	background-image: url(a.png);
-	height: 800px;
-	width: 100%;
-	background-size: cover;
-	background-position:top;
-	text-align: center;
-	font-family: "Times New Roman", Times, serif;
-	font-size: 20px;
-}
-
-.profile label
-{
-	cursor: pointer;
-}
-
-.postButton [type="submit"]
+ .postButton [type="submit"]
 {
 	background-color: yellow;
 	color: black;
@@ -228,6 +203,75 @@ footer
 	width: 15%;
 	height : 10%;
 }
+
+.returnLogin
+{
+	align-items: center;
+	position: relative;
+	margin-left: 55.8%;
+	top: 230px;
+}
+
+
+/* PROFILE */
+ .profile
+ {
+	background-image: url(a.png);
+	height: 800px;
+	width: 100%;
+	background-size: cover;
+	font-family: "Times New Roman", Times, serif;
+	position: absolute;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
+.profile h1
+{
+	top: 85px;
+	position: relative;
+	left: -200px;
+	font-size: 120px;
+	margin-left: 10%
+}
+
+.profile h2
+{
+	top: 60px;
+	position: relative;
+	left: -215px;
+	font-size: 80px;
+	margin-left: 10%
+}
+
+.profile form
+{
+	align-items: center;
+	margin-left: -15%;
+	margin-top: 5%;
+}
+
+.profile label
+{
+	cursor: pointer;
+}
+
+
+.profile input[type="submit"]
+{
+	width: 10%;
+	height: 10%;
+	background-color: yellow;
+}
+
+.returnProfile
+{
+	position: relative;
+	margin-left: 65%;
+	top: 600px;
+}
+
 
 /* ABOUT */
 
@@ -346,6 +390,14 @@ footer
 .postItself input[type="submit"]
 {
 	background-color: yellow;
+}
+
+.returnPostItself
+{
+	align-items: center;
+	position: relative;
+	margin-left: 67.5%;
+	top: 530px;
 }
 
 /*POSTS*/
