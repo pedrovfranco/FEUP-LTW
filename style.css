@@ -59,7 +59,7 @@ h2 > a {
 	padding: 20px 30px;
 	position: relative;
 	left: 310px;
-	top: -650px;
+	top: -655px;
 }
 
 .menu > ul li.active a{
@@ -68,10 +68,21 @@ h2 > a {
 
 .postIndex {
 	position: relative;
-	bottom: 215px;
-	left: 48px;
-	padding: -160px;
+	margin-top: -20.5%;
+	margin-left: 28.5%;
+	/*padding: -160px;*/
 
+}
+
+ .postButton [type="submit"]
+{
+	background-color: yellow;
+	color: black;
+	position: fixed;
+	top: 75%;
+	right: 40%;
+	width: 15%;
+	height : 10%;
 }
 
 /* REGISTER */
@@ -99,7 +110,7 @@ h2 > a {
 .register form
 {
 	text-align: center;
-	margin-top: 14%;
+	margin-top: 16%;
 	font-size: 130%;
 	color: black;
 
@@ -118,7 +129,7 @@ h2 > a {
 	align-items: center;
 	position: relative;
 	margin-left: 62%;
-	top: 420px;
+	top: 402px;
 }
 
 footer
@@ -157,8 +168,8 @@ footer
 	text-align: center;
 	font-size: 50px;
 	position:fixed;
-	left: 1020px;
-	top: 10px;
+	right: 20.5%;
+	top: 3%;
 }
 
 .login h2
@@ -168,48 +179,39 @@ footer
 	text-align: center;
 	font-size: 30px;
 	position:fixed;
-	left: 880px;
-	top: 80px;
+	right: 10%;
+	top: 10%;
 }
 
 .login input[type=text] {
  position: fixed;
- top: 130px;
- left: 1000px;
+ top: 15.5%;
+ right: 18.5%;
 }
 
 .login input[type=password] {
  position: fixed;
- top: 160px;
- left: 1000px;
+ top: 20%;
+ right: 18.5%;
 }
 
 .login input[type="submit"]
 {
 	background-color: yellow;
 	position: fixed;
-	top: 190px;
-	left: 1002.5px;
+	top: 25%;
+	left: 70.5%;
 	width: 10%;
 }
 
- .postButton [type="submit"]
-{
-	background-color: yellow;
-	color: black;
-	position: fixed;
-	top: 590px;
-	left: 800px;
-	width: 15%;
-	height : 10%;
-}
+
 
 .returnLogin
 {
 	align-items: center;
 	position: relative;
-	margin-left: 55.8%;
-	top: 230px;
+	margin-left: 90%;
+	top: 630px;
 }
 
 
@@ -281,7 +283,7 @@ footer
 	background-image: url(room.png);
 	background-size: cover;
 	height: 100%;
-		width: 100%;
+	width: 100%;
 
 }
 
@@ -289,8 +291,8 @@ footer
 {
 	text-align: center;
 	color: black;
-	font-size: 200%;
-	margin-top: 41%;
+	font-size: 500%;
+	margin-top: 42%;
 	margin-right: 3%;
 }
 
@@ -299,7 +301,7 @@ footer
 	align-items: center;
 	position: relative;
 	margin-left: 45%;
-	top: 20px;
+	top: 7px;
 }
 
 /* #posts
