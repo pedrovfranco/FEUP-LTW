@@ -17,6 +17,24 @@
 		}
 	}
 
+	function getUsernameFromID($dbh, $id)
+	{
+		$query = $dbh->prepare('SELECT * FROM User WHERE idUser = ?');
+		$query->execute(array($id));
+
+		$results = $query->fetchAll();
+
+		if (!$results)
+		{
+			echo "\nPDO::errorInfo():\n";
+			print_r($dbh->errorInfo());
+
+			echo "Error!<br>";
+		}
+
+		return $results[0]['username'];
+	}
+
 	function userExists($dbh, $username, $password)
 	{   			
 		$login = $dbh->prepare("SELECT * FROM User WHERE username = ? AND password = ?");
