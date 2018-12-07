@@ -5,20 +5,6 @@
 
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-	$query = $dbh->prepare('SELECT * from Post');
-
-	$status = $query->execute();
-
-	if (!$status)
-	{
-	    echo "\nPDO::errorInfo():\n";
-	    print_r($dbh->errorInfo());
-
-	    echo "Error!<br>";
-	}
-
-	$posts = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>

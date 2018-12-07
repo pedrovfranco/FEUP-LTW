@@ -369,7 +369,7 @@ footer
 	align-items: left;
 	margin-left: auto;
 	margin-right: auto;
-	color: white;
+	/*color: white;*/
 	width: 20%;
 	position: fixed;
 	text-align: left;
