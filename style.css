@@ -267,6 +267,11 @@ footer
 	background-color: yellow;
 }
 
+.profileError
+{
+	color: black;
+}
+
 .returnProfile
 {
 	position: relative;

@@ -1,20 +1,12 @@
 <?php
-$query1 = $dbh->prepare('SELECT * FROM User');
-$query1->execute();
+  	include_once("utilities.php");
 
-while ($row = $query1->fetch())
-{
-  $a = $row['idUser'];
-  $b = $row['username'];
-  $c = $row['password'];
-  $d = $row['age'];
-  $e = $row['email'];
+	ini_set('display_errors', 1);
 
-  echo "$a | $b | $c | $d | $e<br>";
-}
+	$dbh = new PDO('sqlite:database.db');
+	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 ?>
 
-<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +16,9 @@ while ($row = $query1->fetch())
 	<link href="style.css" rel="stylesheet">
 </head>
 <body>
+	<?php
+		$id = loggedIn();
+		if ($id != -1) : ?>
 	<div class="profile">
 		<h1>Profile</h1>
 		<h2> Edit your settings ! </h2>
@@ -69,15 +64,21 @@ while ($row = $query1->fetch())
 
 		</form>
 	</div>
+	<?php else : ?>
+		<div class="profileError">
+			<h1> You can't acess your profile if you're not logged in ! </h1>
+		</div>
+	<?php endif; ?>
+	
 	<div class="returnProfile">
 	<a href="index.php">
 		<img src="./12th.png">
 	</a>
-</div>
+	</div>
 
 <footer>
 	<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
 </footer>
 
 </body>
-</html> -->
+</html> 
