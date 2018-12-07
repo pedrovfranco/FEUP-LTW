@@ -1,5 +1,5 @@
 <?php
-	
+
 	include_once("utilities.php");
 
 	ini_set('display_errors', 1);
@@ -31,7 +31,7 @@
 		else
 		{
 			$register = $dbh->prepare('INSERT INTO User VALUES (NULL, ?, ?, ?, ?)');
-	
+
 			$dbh->beginTransaction();
 
 			$status = $register->execute(array($username, $hash, $age, $email));
@@ -50,6 +50,6 @@
 		}
 	}
 
-	
+
 	echo "<br><a href=\"index.html\">Go Back</a> </li>";
 ?>

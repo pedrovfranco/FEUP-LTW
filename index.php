@@ -46,7 +46,7 @@
 			<?php else : ?>
 				<li class="active"> <a href="logout.php">Logout</a> </li>
 				<li class="active"> <a href="about.html">About</a> </li>
-				<li class="active"> <a href="profile.html">Profile</a> </li>
+				<li class="active"> <a href="profile.php">Profile</a> </li>
 		</ul>
     <form class="postButton" action="indextopost.php">
 			<input type="submit" value="Create Post">
@@ -58,7 +58,7 @@
 
 
   <div class="postIndex">
-    <a href="POSTS.html">
+    <a href="POSTS.php">
       <img src="./posts.png">
     </a>
   </div>
