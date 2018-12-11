@@ -1,24 +1,10 @@
 <?php
-  include_once("utilities.php");
+ 	include_once("utilities.php");
 
 	ini_set('display_errors', 1);
 
-  $dbh = new PDO('sqlite:database.db');
+ 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-  $query1 = $dbh->prepare('SELECT * FROM User');
-  $query1->execute();
-
-  while ($row = $query1->fetch())
-  {
-    $a = $row['idUser'];
-    $b = $row['username'];
-    $c = $row['password'];
-    $d = $row['age'];
-    $e = $row['email'];
-
-    echo "$a | $b | $c | $d | $e<br>";
-  }
 
 ?>
 
@@ -37,11 +23,8 @@
 
     $idS = (string)$id;
 
-     $query1 = $dbh->prepare('SELECT * FROM User WHERE username = :a ');
+     $query1 = $dbh->prepare('SELECT * FROM User WHERE idUser = :a ');
      $query1->bindParam(':a', $idS);
-    //  $stmt = $dbh->prepare('INSERT INTO person (name, address)
-    //                    VALUES (:name, :address)');
-    // $stmt->bindParam(':name', $name);
 
      $query1->execute();
 
@@ -61,7 +44,7 @@
 	<div class="profile">
 		<h1>Profile</h1>
 		<h2> Edit your settings ! </h2>
-		<form action="editprofile.php" method="postPost">
+		<form action="editprofile.php" method="post">
 			Username:<br>
     	<input type="text" name="username" value="" required>
 			<br>
