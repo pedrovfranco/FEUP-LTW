@@ -69,13 +69,13 @@
 		   				<!-- <div class="post-number">1</div> -->
 		   				<div class="post-votes">
 		   					<div class='ball up' >
-		   						<button onclick='getVotes(<?=$post['idUser']?>)' id='upVote()'>
+		   						<button onclick='upVote(<?=$post['idPost']?>)' id='upVote()'>
 		   							<img src="./upvote.jpg">
 		   						</button>
 		   					</div>
 		   					<div id="numberOfVotes"><?=$post['Upvotes']-$post['Downvotes']?></div>
 		   					<div class='ball down' id='downvote()'>
-		   						<button onclick='downVote()' id='downVote()'>
+		   						<button onclick='downVote(<?=$post['idPost']?>)' id='downVote()'>
 		   							<img src="./downvote1.png">
 		   						</button>
 		   					</div>

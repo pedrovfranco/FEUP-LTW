@@ -1,19 +1,33 @@
-function upVote()
+function upVote(id)
 {
-  var xhttp = new XMLHttpRequest();
+	xhttp = new XMLHttpRequest();
 
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+	  		document.getElementById("numberOfVotes").innerHTML = this.responseText;
+		}
+	};
 
-
-  count = count + 1;
-  numberOfVotes.innerHTML = count;
+	xhttp.open("GET", "upvote.php?upvote=true&idPost=" + id, true);
+	xhttp.send();
 }
 
-function downVote()
+function downVote(id)
 {
-  var numberOfVotes = document.getElementById('numberOfVotes');
-  var count = parseInt(numberOfVotes.innerHTML);
-  count = count - 1;
-  numberOfVotes.innerHTML = count;
+	xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+	  		document.getElementById("numberOfVotes").innerHTML = this.responseText;
+		}
+	};
+
+	xhttp.open("GET", "upvote.php?upvote=false&idPost=" + id, true);
+	xhttp.send();
 }
 
 
@@ -25,11 +39,15 @@ function getVotes(id)
 	{
 		if (this.readyState == 4 && this.status == 200)
 		{
-	  		document.getElementById("txtHint").innerHTML = this.responseText;
+	  		document.getElementById("numberOfVotes").innerHTML = this.responseText;
 		}
-	;
+	};
 
-	xhttp.open("GET", "getcustomer.php?q="+str, true);
+	// xhttp.open("POST", "upvote.php", true);
+	// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	// xhttp.send("upvote=false");
+
+	xhttp.open("GET", "upvote.php?upvote=false&idPost=" + id, true);
 	xhttp.send();
 
 }

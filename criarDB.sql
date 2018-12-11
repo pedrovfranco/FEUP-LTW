@@ -36,3 +36,14 @@ CREATE TABLE Comment (
 	Upvotes		INTEGER,
 	Downvotes	INTEGER
 );
+
+CREATE TABLE Votes (
+	idComment	INTEGER NOT NULL PRIMARY KEY,
+	idUser		INTEGER REFERENCES User (idUser),
+	idPost 		INTEGER REFERENCES Post (idPost),
+
+	Text		VARCHAR (500) NOT NULL,
+
+	Upvotes		INTEGER,
+	Downvotes	INTEGER
+);
