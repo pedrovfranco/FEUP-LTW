@@ -6,11 +6,11 @@
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-	$query = $dbh->prepare('SELECT * FROM Post WHERE idPost = ?');
+	$query1 = $dbh->prepare('SELECT * FROM Post WHERE idPost = ?');
 
-	$status = $query->execute(array($_GET['id']));
+	$status1 = $query1->execute(array($_GET['id']));
 
-	if (!$status)
+	if (!$status1)
 	{
 		echo "\nPDO::errorInfo():\n";
 		print_r($dbh->errorInfo());
@@ -18,11 +18,11 @@
 		echo "Error!<br>";
 	}
 
-	$fetched = $query->fetchAll();
+	$fetched1 = $query1->fetchAll();
 
-	if (count($fetched) == 1)
+	if (count($fetched1) == 1)
 	{
-		$post = $fetched[0];
+		$post = $fetched1[0];
 
 		$idPost = $post['idPost'];
 		$idUser = $post['idUser'];
@@ -45,6 +45,20 @@
 		echo "Database error!<br>";
 		echo "<br><a href=\"login.php\">Go Back</a> </li>";
 	}
+
+	$query2 = $dbh->prepare('SELECT * FROM Comment WHERE idPost = ?');
+	$status2 = $query2->execute(array($idPost));
+
+	if (!$status2)
+	{
+		echo "\nPDO::errorInfo():\n";
+		print_r($dbh->errorInfo());
+
+		echo "Error!<br>";
+	}
+
+	$comments = $query2->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,6 +66,7 @@
 	<title> LTW </title>
 	<meta charset="UTF-8">
 	<link href="style.css" rel="stylesheet">
+	<script src="./commentScript.js"></script>
 </head>
 	<body>
 		<header>
@@ -65,11 +80,11 @@
 						<li class="active"> <a href="register.html">Register</a> </li>
 						<li class="active"> <a href="login.html">Login</a> </li>
 						<li class="active"> <a href="about.html">About</a> </li>
-				<?php else : ?>
+					<?php else : ?>
 						<li class="active"> <a href="logout.php">Logout</a> </li>
 						<li class="active"> <a href="about.html">About</a> </li>
 						<li class="active"> <a href="profile.html">Profile</a> </li>
-				<?php endif; ?>
+					<?php endif; ?>
 			</ul>
 		</div>
 
@@ -81,17 +96,23 @@
 					</h1>
 				</header>
 				<?php foreach ($paragraphs as $paragraph) { ?>
-				<p><?=$paragraph?></p>
+				<?=$paragraph?>
 				<?php } ?>
 				
-				<footer>
+				<!-- <footer>
 					<span class="date"><?=date('Y-m-d H:i:s', $article['published']);?></span>
-				</footer>
+				</footer> -->
 			</article>
 		</section>
 
-		<footer>
-			<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
-		</footer>
+
+		<textarea id="commentText" placeholder="Comment here" rows="4" cols="40" maxlength="500" required></textarea>
+
+
+		<button id="submitComment" onclick="registerComment(<?=$idPost?>)" > Submit </button>
+
+	
+
+
 	</body>
 </html>

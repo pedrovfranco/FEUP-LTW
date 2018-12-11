@@ -37,8 +37,22 @@
 
 	    echo "Error on insert!<br>";
 	}
-	else
-		echo "Post sucessful!<br>";
 
-	echo "<br><a href=\"index.html\">Go Back</a> </li>";
+	$idQuery = $dbh->prepare("SELECT last_insert_rowid()");
+
+	$status2 = $idQuery->execute();
+
+	if (!$status2)
+	{
+	    echo "\nPDO::errorInfo():\n";
+	    print_r($dbh->errorInfo());
+
+	    echo "Error on insert!<br>";
+	}
+
+	$result = $idQuery->fetchAll();
+	$id = $result[0][0];
+
+	header("Location: postPage.php?id=$id");
+	die();
 ?>
