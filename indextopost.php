@@ -15,7 +15,7 @@
 	}
 	else
 	{
-		header("Location: post.html");
+		header("Location: createPost.html");
 		exit(1);
 	}
 ?>

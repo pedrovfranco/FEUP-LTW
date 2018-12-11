@@ -44,7 +44,7 @@
 
 
   <div class="postIndex">
-    <a href="POSTS.php">
+    <a href="posts.php">
       <img src="./posts.png">
     </a>
   </div>

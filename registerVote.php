@@ -10,7 +10,7 @@
 		exit(1);
 	}
 
-	$upvoteFlag = $_REQUEST['upvote'];
+	$voteType = $_REQUEST['voteType'];
 	$idPost = $_REQUEST['idPost'];
 
 	$dbh = new PDO('sqlite:database.db');
@@ -24,10 +24,12 @@
 	$upvotes = $result1[0]['Upvotes'];
 	$downvotes = $result1[0]['Downvotes'];
 
-	if ($upvoteFlag == "true")
+	if ($voteType == "up")
 		$upvotes++;
-	else
+	else if ($voteType == "down")
 		$downvotes++;
+	else
+		echo 'Error retrieving voteType';
 
 	$query2 = $dbh->prepare('UPDATE Post SET Upvotes = ?, Downvotes = ? WHERE idPost = ?');
 	$query2->execute(array($upvotes, $downvotes, $idPost));

@@ -1,20 +1,14 @@
 function upVote(id)
 {
-	xhttp = new XMLHttpRequest();
-
-	xhttp.onreadystatechange = function()
-	{
-		if (this.readyState == 4 && this.status == 200)
-		{
-	  		document.getElementById("numberOfVotes").innerHTML = this.responseText;
-		}
-	};
-
-	xhttp.open("GET", "upvote.php?upvote=true&idPost=" + id, true);
-	xhttp.send();
+	registerVote(id, "up");
 }
 
 function downVote(id)
+{
+	registerVote(id, "down");
+}
+
+function registerVote(id, voteType)
 {
 	xhttp = new XMLHttpRequest();
 
@@ -26,7 +20,7 @@ function downVote(id)
 		}
 	};
 
-	xhttp.open("GET", "upvote.php?upvote=false&idPost=" + id, true);
+	xhttp.open("GET", "registerVote.php?voteType=" + voteType + "&idPost=" + id, true);
 	xhttp.send();
 }
 
