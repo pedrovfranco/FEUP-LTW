@@ -46,7 +46,7 @@
 		echo "<br><a href=\"login.php\">Go Back</a> </li>";
 	}
 
-	$query2 = $dbh->prepare('SELECT * FROM Comment WHERE idPost = ?');
+	$query2 = $dbh->prepare('SELECT * FROM user, (SELECT * FROM Comment WHERE idPost = ?) as comments where user.idUser = comments.idUser');
 	$status2 = $query2->execute(array($idPost));
 
 	if (!$status2)
@@ -103,6 +103,17 @@
 					<span class="date"><?=date('Y-m-d H:i:s', $article['published']);?></span>
 				</footer> -->
 			</article>
+		</section>
+
+		<section id="comments">
+			<?php foreach ($comments as $comment) { ?>
+			<?=$comment['Text']?><br>
+			<?=$comment['Username']?><br>
+			<?php } ?>
+			
+			<!-- <footer>
+				<span class="date"><?=date('Y-m-d H:i:s', $article['published']);?></span>
+			</footer> -->
 		</section>
 
 
