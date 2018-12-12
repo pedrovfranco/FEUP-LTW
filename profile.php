@@ -6,6 +6,20 @@
  	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
+  $query = $dbh->prepare('SELECT * FROM User WHERE idUser = :a ');
+  $query->bindParam(':a', $idS);
+  $query->execute();
+  while ($row = $query->fetch())
+  {
+    $a = $row['idUser'];
+    $b = $row['username'];
+    $c = $row['password'];
+    $d = $row['age'];
+    $e = $row['email'];
+
+    echo "$a | $b | $c | $d | $e<br>";
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +95,7 @@
 
 			<br>
 			<br>
-			<input type="submit" value="Edit profile">
+			<input type="submit" value="Register">
 
 		</form>
 	</div>
