@@ -521,6 +521,19 @@ footer
 	font-size: 130%;
 }
 
+#commentText
+{
+	position: absolute;
+	top: 50%;
+	left : 10%;
+}
+ #submitComment
+{
+	position: absolute;
+	top: 57.8%;
+	left : 10%;
+}
+
 nav
 {
 	background-image: url(pt.png);
