@@ -456,6 +456,7 @@ footer
 	border-width: thin;
 	position: relative;
 	align-items: left;
+	background-attachment: scroll;
 }
 
 .post
@@ -640,13 +641,15 @@ nav ul li{
 	margin-right: auto;
 	background-color: black;
 	color: yellow;
-	width: 20%;
-	position: fixed;
+	width: 100%;
+	position: absolute;
 	text-align: center;
+	background-attachment: scroll;
 }
 
 .submitButton
 {
+		background-attachment: scroll;
 	position: absolute;
 	background-color: black;
 	color: white;

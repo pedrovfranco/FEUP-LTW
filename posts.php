@@ -56,13 +56,12 @@
 						<li><a href="index.php">Home</a></li>
 						<li><a href="logout.php">Logout</a></li>
 						<li><a href="profile.html">Profile</a></li>
-					<?php endif; ?>
-
 				</ul>
 			</div>
 			<form class="submitButton" action="indextopost.php">
 				<input type="submit" value="Submit a new post">
 			</form>
+		<?php endif; ?>
 		</div>
 	</nav>
 	     <!-- <div class="backgroundTactics">
