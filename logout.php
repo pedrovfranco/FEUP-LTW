@@ -16,5 +16,8 @@
 		exit(1);
 	}
 
-	header('Location: index.html');
+	echo "<script type=\"text/javascript\">
+            	javascript:history.go(-1);
+            </script>";
+	die();
 ?>

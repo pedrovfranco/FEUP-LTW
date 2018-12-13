@@ -6,7 +6,7 @@
 
 	if ($id == -1)
 	{
-		echo "Must be logged in to upvote";
+		echo "Error.Must be logged in to upvote";
 		exit(1);
 	}
 

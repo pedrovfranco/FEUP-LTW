@@ -1,9 +1,13 @@
 <?php
 	include_once("utilities.php");
+
 	ini_set('display_errors', 1);
+
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
 	$query = $dbh->prepare('SELECT * from Post');
+
 	$status = $query->execute();
 	if (!$status)
 	{
@@ -11,6 +15,7 @@
 		print_r($dbh->errorInfo());
 		echo "Error!<br>";
 	}
+
 	$posts = $query->fetchAll();
 ?>
 
@@ -42,8 +47,17 @@
 		<div class="profileInPosts">
 			<div>
 				<ul>
-					<li><a href="logout.php">Logout</a></li>
-					<li><a href="profile.html">Profile</a></li>
+					<?php
+					$id = loggedIn();
+					if ($id == -1) : ?>
+						<li><a href="index.php">Home</a></li>
+						<li><a href="login.html">Login</a></li>
+					<?php else : ?>
+						<li><a href="index.php">Home</a></li>
+						<li><a href="logout.php">Logout</a></li>
+						<li><a href="profile.html">Profile</a></li>
+					<?php endif; ?>
+
 				</ul>
 			</div>
 			<form class="submitButton" action="indextopost.php">

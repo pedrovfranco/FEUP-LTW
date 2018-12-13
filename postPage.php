@@ -34,16 +34,21 @@
 		$Downvotes = $post['Downvotes'];
 
 		$paragraphs = explode("\n", $Text);
+
+		if (substr($Link, 0, 7) != "http://")
+			$Link = "http://" . $Link;
 	}
 	else if (count($fetched) == 0)
 	{
 		echo "Post not found!<br>";
 		echo "<br><a href=\"login.php\">Go Back</a> </li>";
+		die();
 	}
 	else
 	{
 		echo "Database error!<br>";
 		echo "<br><a href=\"login.php\">Go Back</a> </li>";
+		die();
 	}
 
 	$query2 = $dbh->prepare('SELECT * FROM user, (SELECT * FROM Comment WHERE idPost = ?) as comments where user.idUser = comments.idUser');
@@ -58,7 +63,6 @@
 	}
 
 	$comments = $query2->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,14 +96,12 @@
 			<article>
 				<header>
 					<h1>
-						<a href="postPage.php?id=<?=$idPost?>"><?=$Title?></a>
+						<a href="<?=$Link?>"><?=$Title?></a>
 					</h1>
-					<h2>
-						<a><?=$Text?></a>
-					</h2>
+
 				</header>
 				<?php foreach ($paragraphs as $paragraph) { ?>
-				<?=$paragraph?>
+				<p><?=$paragraph?><p>
 				<?php } ?>
 
 				<!-- <footer>
@@ -110,13 +112,9 @@
 
 		<section id="comments">
 			<?php foreach ($comments as $comment) { ?>
-			<?=$comment['Text']?><br>
-			<?=$comment['Username']?><br>
+				<?=$comment['username']?><br>
+				<?=$comment['Text']?><br><br><br>
 			<?php } ?>
-
-			<!-- <footer>
-				<span class="date"><?=date('Y-m-d H:i:s', $article['published']);?></span>
-			</footer> -->
 		</section>
 
 

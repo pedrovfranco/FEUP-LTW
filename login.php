@@ -21,8 +21,9 @@
 	if (count($results) == 1)
 	{
 		$_SESSION['id'] = $results[0]['idUser'];
-		header("Location: index.php");
-		die();
+		echo "<script type=\"text/javascript\">
+            	javascript:history.go(-2);
+            </script>";
 	}
 	else if (count($results) == 0)
 	{
