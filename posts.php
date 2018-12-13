@@ -73,7 +73,7 @@
 		   							<img src="./upvote.jpg">
 		   						</button>
 		   					</div>
-		   					<div id="numberOfVotes"><?=$post['Upvotes']-$post['Downvotes']?></div>
+		   					<div id="numberOfVotes<?=$post['idPost']?>"><?=$post['Upvotes']-$post['Downvotes']?></div>
 		   					<div class='ball down' id='downvote()'>
 		   						<button onclick='downVote(<?=$post['idPost']?>)' id='downVote()'>
 		   							<img src="./downvote1.png">
