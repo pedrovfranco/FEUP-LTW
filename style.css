@@ -91,37 +91,6 @@
 }
 
 
-.navbar > ul
-{
-	top: 2%;
-	position: relative;
-	float: left;
-	list-style: none;
-}
-
-.navbar > ul li
-{
-	top: 2%;
-	position: absolute;
-	display: inline-table;
-}
-
-.navbar > ul li a
-{
-	top: 2%;
-	position: absolute;
-	color: white;
-	background-color: black;
-	text-decoration: none;
-	font-family: "Times New Roman", Times, serif;
-	font-size: 30px;
-	padding: 20px 30px;
-}
-
-.navbar > ul li.active a{
-	border: 2px solid white;
-}
-
 .postIndex {
 	margin:auto auto;
 	position: relative;
@@ -465,36 +434,44 @@ footer
 }
 
 /*POSTS*/
+.postPage
+{
+	margin-top: 0%;
+	display: grid;
+	background-color: grey;
+	z-index: 1;
+	align-items: left;
+}
+
+
 .posts {
 	display: grid;
 	grid-auto-rows: auto;
-}
-
-.postPage
-{
-	display:grid;
-	grid-auto-rows: auto;
-}
-
-.posts {
+	margin-top: 0%;
+	margin-bottom: 0%;
 	margin: 0;
 	padding: 0;
 	background-color: grey;
 	border-bottom: solid #5f99cf;
 	border-width: thin;
 	position: relative;
-	align-items: center;
+	align-items: left;
 }
 
 .post
 {
-	background: url(stadium.jpg);
+	margin-bottom: -1%;
+	text-align: left;
+	margin-bottom: 0%;
+	background: url(korea.jpg);
 	background-size: cover;
+	border: 10px solid black;
+	color: white;
 }
 
 .profileInPosts
 {
-	margin-top: -18%;
+	margin-top: -10%;
 }
 
 .profileInPosts ul li{
@@ -521,17 +498,103 @@ footer
 	font-size: 130%;
 }
 
+#post
+{
+	text-align: center;
+	margin-top: 5%;
+	position: relative;
+	height: 20%;
+}
+
+#post h1
+{
+	font-size: 400%;
+}
+
+#post h1 a
+{
+	text-align: center;
+	color: white;
+}
+
+#post h2
+{
+	text-align: center;
+	font-size: 150%;
+}
+
+#post h2 a
+{
+	text-align: center;
+	color: black;
+	background-color: white;
+}
+
+.postPageMenu
+{
+	align-items: center;
+	margin: auto auto;
+	position: absolute;
+	background-image: url(graffitti.jpg);
+  height: 100%;
+	width: 100%;
+	top: 0%;
+  background-size: cover;
+  background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+
+}
+
+
+.postPageMenu > ul
+{
+	top: 2%;
+	left: 20%;
+	position: relative;
+	float: left;
+	list-style: none;
+}
+
+.postPageMenu > ul li
+{
+	top: 2%;
+	position: relative;
+	display: inline-table;
+}
+
+.postPageMenu > ul li a
+{
+	top: 2%;
+	position: relative;
+	color: white;
+	background-color: black;
+	text-decoration: none;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 30px;
+	padding: 20px 30px;
+}
+
+.postPageMenu > ul li.active a{
+	border: 2px solid white;
+}
+
+
+#comments
+{
+	position: relative;
+}
+
 #commentText
 {
-	position: absolute;
-	top: 50%;
-	left : 10%;
+	position: relative;
+	margin-left: 40%;
+	margin-top: 30%;
 }
  #submitComment
 {
-	position: absolute;
-	top: 57.8%;
-	left : 10%;
+	position: relative;
+	margin-left: 45%;
 }
 
 nav
@@ -565,67 +628,66 @@ nav ul li{
 	border-bottom: solid black;
 }
 
+
+.submitButton input[type="submit"]
+{
+
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: black;
+	color: yellow;
+	width: 20%;
+	position: fixed;
+	text-align: center;
+}
+
 .submitButton
 {
+	position: absolute;
 	background-color: black;
 	color: white;
 	width: 20%;
 	border: solid blue;
 	margin-left: 70%;
-	margin-top: 20%;
-}
-
-/* .backgroundTactics{
-	background-image: url(tactics.jpg);
-	width: 100%;
-	height: 100%;
-	background-repeat: no-repeat;
-	background-size: cover;
-} */
-
-.postPage
-{
-	margin-left: 10%;
-	margin-right: 70%;
-	display: grid;
-	grid-auto-rows: 100%;
-	background-color: grey;
-	z-index: 1;
+	margin-top: 9%;
 }
 
 .post-number {
 	margin-top: 2px;
-	font-size: 30px;
-	text-align: left;
+	font-size: 100%;
+	text-align: center;
 	color: blue;
 }
 
-/* .ball{
-	border: solid black;
-	border-width: 0 3px 3px 0;
-	display: inline-block;
-	padding: 3px;
-}
-
-.up{
-	transform: rotate(-135deg);
-}
-
-.down
+.post-votes
 {
-	transform: rotate(45deg);
-} */
+	text-align: left;
+}
 
 .post-body
 {
-	margin-left: 20px;
-	margin-top: 20px;
+	bottom: 2%;
+	left: 0.5%;
+	position: relative;
+	color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .post-title
 {
-	font-size: 22px;
-	margin-top: -10px;
+	position: relative;
+	font-size: 320%;
+	color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .submitter

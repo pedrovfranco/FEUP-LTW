@@ -1,23 +1,16 @@
 <?php
 	include_once("utilities.php");
-
 	ini_set('display_errors', 1);
-
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
 	$query = $dbh->prepare('SELECT * from Post');
-
 	$status = $query->execute();
-
 	if (!$status)
 	{
 		echo "\nPDO::errorInfo():\n";
 		print_r($dbh->errorInfo());
-
 		echo "Error!<br>";
 	}
-
 	$posts = $query->fetchAll();
 ?>
 
@@ -53,21 +46,25 @@
 					<li><a href="profile.html">Profile</a></li>
 				</ul>
 			</div>
+			<form class="submitButton" action="indextopost.php">
+				<input type="submit" value="Submit a new post">
+			</form>
 		</div>
 	</nav>
 	     <!-- <div class="backgroundTactics">
 		       <h1> POST </h1>
 		   </div> -->
-
-		   <button class="submitButton">Submit a new post</button>
-
 		   <div id="posts">
 		   	<?php foreach($posts as $post) { ?>
 
 		   		<div id="main" class="postPage">
 		   			<div class='post'>
 		   				<!-- <div class="post-number">1</div> -->
-		   				<div class="post-votes">
+							<div class="post-body">
+		   					<a href="postPage.php?id=<?=$post['idPost']?>" class='post-title'> <?=$post['Title']?> </a>
+		   					<p> Submited on <?=date('H:i:s Y-m-d', $post['Date']);?> <a href="#" class='submitter'> <?=getUsernameFromID($dbh, $post['idUser']);?></a><br><br></p>
+		   				</div>
+							<div class="post-votes">
 		   					<div class='ball up' >
 		   						<button onclick='upVote(<?=$post['idPost']?>)' id='upVote()'>
 		   							<img src="./upvote.jpg">
@@ -79,10 +76,6 @@
 		   							<img src="./downvote1.png">
 		   						</button>
 		   					</div>
-		   				</div>
-		   				<div class="post-body">
-		   					<a href="postPage.php?id=<?=$post['idPost']?>" class='post-title'> <?=$post['Title']?> </a>
-		   					<p> Submited on <?=date('H:i:s Y-m-d', $post['Date']);?> <a href="#" class='submitter'> <?=getUsernameFromID($dbh, $post['idUser']);?></a><br><br></p>
 		   				</div>
 		   				<div class='post-options'>
 		   					<span>1000 comments</span>

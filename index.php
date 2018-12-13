@@ -16,11 +16,6 @@
 	<link href="style.css" rel="stylesheet">
 </head>
  <body>
-  <header>
-    <ul>
-      <li class="active"><a href="profile.php">Profile</a></li>
-    </ul>
-  </header>
 
 	<div class="menu">
     	<h1><a href="index.html">The 12th Player </a></h1>

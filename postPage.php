@@ -72,7 +72,7 @@
 		<header>
 		</header>
 
-		<div class="menu">
+		<div class="postPageMenu">
 			<ul>
 				<?php
 					$id = loggedIn();
@@ -94,11 +94,14 @@
 					<h1>
 						<a href="postPage.php?id=<?=$idPost?>"><?=$Title?></a>
 					</h1>
+					<h2>
+						<a><?=$Text?></a>
+					</h2>
 				</header>
 				<?php foreach ($paragraphs as $paragraph) { ?>
 				<?=$paragraph?>
 				<?php } ?>
-				
+
 				<!-- <footer>
 					<span class="date"><?=date('Y-m-d H:i:s', $article['published']);?></span>
 				</footer> -->
@@ -110,7 +113,7 @@
 			<?=$comment['Text']?><br>
 			<?=$comment['Username']?><br>
 			<?php } ?>
-			
+
 			<!-- <footer>
 				<span class="date"><?=date('Y-m-d H:i:s', $article['published']);?></span>
 			</footer> -->
@@ -122,7 +125,7 @@
 
 		<button id="submitComment" onclick="registerComment(<?=$idPost?>)" > Submit </button>
 
-	
+
 
 
 	</body>

@@ -27,4 +27,3 @@ function registerVote(id, voteType)
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("voteType=" + voteType + "&idPost=" + id);
 }
-
