@@ -3,22 +3,29 @@
 
 	ini_set('display_errors', 1);
 
+	$id = loggedIn();
+
+	if ($id == -1)
+	{
+		header("Location: login.html");
+		die();
+	}
+
  	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-  $query = $dbh->prepare('SELECT * FROM User WHERE idUser = :a ');
-  $query->bindParam(':a', $idS);
-  $query->execute();
-  while ($row = $query->fetch())
-  {
-    $a = $row['idUser'];
-    $b = $row['username'];
-    $c = $row['password'];
-    $d = $row['age'];
-    $e = $row['email'];
+	$query = $dbh->prepare('SELECT * FROM User WHERE idUser = ? ');
+	$query->execute(array($id));
 
-    echo "$a | $b | $c | $d | $e<br>";
-  }
+	$row = $query->fetchAll()[0];
+
+	$username = $row['username'];
+	$password = $row['password'];
+	$age = $row['age'];
+	$email = $row['email'];
+	$pic = $row['pic'];
+
+	echo "$id | $username | $password | $age | $email | $pic<br>";
 
 ?>
 
@@ -32,27 +39,6 @@
 </head>
 <body>
 	<?php
-		$id = loggedIn();
-    // echo $id;
-
-    $idS = (string)$id;
-
-     $query1 = $dbh->prepare('SELECT * FROM User WHERE idUser = :a ');
-     $query1->bindParam(':a', $idS);
-
-     $query1->execute();
-
-     while ($row = $query1->fetch())
-     {
-       $a = $row['idUser'];
-       $b = $row['username'];
-       $c = $row['password'];
-       $d = $row['age'];
-       $e = $row['email'];
-
-       echo "$a | $b | $c | $d | $e<br>";
-     }
-
 
     if ($id != -1) : ?>
 	<div class="profile">
@@ -60,42 +46,42 @@
 		<h2> Edit your settings ! </h2>
 		<form action="editprofile.php" method="post">
 			Username:<br>
-    	<input type="text" name="username" value="" required>
+    	<input type="text" name="username" value="">
 			<br>
 			Password:<br>
-			<input type="password" name="password" value="" required>
+			<input type="password" name="password" value="">
 			<br>
 			E-mail:<br>
-			<input type="email" name="email" value="" required>
+			<input type="email" name="email" value="">
 			<br>
 			Age:<br>
-			<input type="number" min="13" max="420" name="age" value="" required>
+			<input type="number" min="13" max="120" name="age" value="">
 			<br>
 			<br>
 			<label class="big1">
-				<img src="camisolas/benfica.png" alt="Benfica" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="1">
+				<img src="<?php $id = 0; getShirtHTML($id); ?>" alt="Benfica" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?>>
 			</label>
 			<label class="big2">
-				<img src="camisolas/porto.jpg" alt="Porto" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="2">
+				<img src="<?php $id = 1; getShirtHTML($id); ?>" alt="Porto" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
 			</label>
 			<label class="big3">
-				<img src="camisolas/sporting.png" alt="Sporting" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="3">
+				<img src="<?php $id = 2; getShirtHTML($id); ?>" alt="Sporting" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
 			</label>
 			<label class="big4">
-				<img src="camisolas/braga.jpg" alt="Braga" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="4">
+				<img src="<?php $id = 3; getShirtHTML($id); ?>" alt="Braga" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
 			</label>
 			<label class="big5">
-				<img src="camisolas/guimaraes.png" alt="Guimarães" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="5">
+				<img src="<?php $id = 4; getShirtHTML($id); ?>" alt="Guimarães" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
 			</label>
 
 			<br>
 			<br>
-			<input type="submit" value="Register">
+			<input type="submit" value="Edit">
 
 		</form>
 	</div>

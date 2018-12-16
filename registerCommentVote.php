@@ -11,13 +11,13 @@
 	}
 
 	$voteType = $_REQUEST['voteType'];
-	$idPost = $_REQUEST['idPost'];
+	$idComment = $_REQUEST['idComment'];
 
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 
-	$query = $dbh->prepare('SELECT Upvotes, Downvotes FROM Post WHERE idPost = ?');
-	$query->execute(array($idPost));
+	$query = $dbh->prepare('SELECT Upvotes, Downvotes FROM Comment WHERE idComment = ?');
+	$query->execute(array($idComment));
 
 	if (!$query)
 	{
@@ -38,8 +38,8 @@
 		echo 'Error retrieving voteType';
 
 
-	$query = $dbh->prepare('SELECT * FROM VotesPost WHERE idUser = ? AND idPost = ?');
-	$query->execute(array($id, $idPost));
+	$query = $dbh->prepare('SELECT * FROM VotesComment WHERE idUser = ? AND idComment = ?');
+	$query->execute(array($id, $idComment));
 
 	if (!$query)
 	{
@@ -52,13 +52,13 @@
 	if (count($result) == 0)
 	{
 		if ($voteType == "up")
-			$query = $dbh->prepare('INSERT INTO VotesPost VALUES(?, ?, 1)');
+			$query = $dbh->prepare('INSERT INTO VotesComment VALUES(?, ?, 1)');
 		else if ($voteType == "down")
-			$query = $dbh->prepare('INSERT INTO VotesPost VALUES(?, ?, -1)');
+			$query = $dbh->prepare('INSERT INTO VotesComment VALUES(?, ?, -1)');
 		else
 			echo 'Error retrieving voteType';
 
-		$query->execute(array($id, $idPost));
+		$query->execute(array($id, $idComment));
 
 		if (!$query)
 		{
@@ -73,7 +73,7 @@
 
 		if ( ($voteType == "up" && $value == 1) || ($voteType == "down" && $value == -1) )
 		{
-			$query = $dbh->prepare('DELETE FROM VotesPost WHERE idUser = ? AND idPost = ?');
+			$query = $dbh->prepare('DELETE FROM VotesComment WHERE idUser = ? AND idComment = ?');
 
 			if ($voteType == "up")
 				$upvotes -= 2;
@@ -82,7 +82,7 @@
 		}
 		else if ($voteType == "up")
 		{
-			$query = $dbh->prepare('UPDATE VotesPost SET value = 1 WHERE idUser = ? AND idPost = ?');
+			$query = $dbh->prepare('UPDATE VotesComment SET value = 1 WHERE idUser = ? AND idComment = ?');
 
 			if ($value == 1)
 				$upvotes--;
@@ -91,7 +91,7 @@
 		}
 		else if ($voteType == "down")
 		{
-			$query = $dbh->prepare('UPDATE VotesPost SET value = -1 WHERE idUser = ? AND idPost = ?');
+			$query = $dbh->prepare('UPDATE VotesComment SET value = -1 WHERE idUser = ? AND idComment = ?');
 
 			if ($value == 1)
 				$upvotes--;
@@ -101,7 +101,7 @@
 		else
 			echo 'Error retrieving voteType';
 
-		$query->execute(array($id, $idPost));
+		$query->execute(array($id, $idComment));
 
 		if (!$query)
 		{
@@ -117,8 +117,8 @@
 	}
 
 	
-	$query = $dbh->prepare('UPDATE Post SET Upvotes = ?, Downvotes = ? WHERE idPost = ?');
-	$query->execute(array($upvotes, $downvotes, $idPost));
+	$query = $dbh->prepare('UPDATE Comment SET Upvotes = ?, Downvotes = ? WHERE idComment = ?');
+	$query->execute(array($upvotes, $downvotes, $idComment));
 
 	if (!$query)
 	{

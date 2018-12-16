@@ -70,7 +70,8 @@
 	<title> LTW </title>
 	<meta charset="UTF-8">
 	<link href="style.css" rel="stylesheet">
-	<script src="./commentScript.js"></script>
+	<script src="registerComment.js"></script>
+	<script src="registerCommentVote.js"></script>
 </head>
 	<body>
 		<header>
@@ -87,7 +88,7 @@
 					<?php else : ?>
 						<li class="active"> <a href="logout.php">Logout</a> </li>
 						<li class="active"> <a href="about.html">About</a> </li>
-						<li class="active"> <a href="profile.html">Profile</a> </li>
+						<li class="active"> <a href="profile.php">Profile</a> </li>
 					<?php endif; ?>
 			</ul>
 		</div>
@@ -112,6 +113,19 @@
 
 		<section id="comments">
 			<?php foreach ($comments as $comment) { ?>
+				<div class="comment-votes">
+					<div class='ball up' >
+						<button onclick='upVoteComment(<?=$comment['idComment']?>)' id='upVoteComment()'>
+							<img src="./upvote.jpg">
+						</button>
+					</div>
+					<div id="numberOfVotes<?=$comment['idComment']?>"><?=$comment['Upvotes']-$comment['Downvotes']?></div>
+					<div class='ball down' id='downvote()'>
+						<button onclick='downVoteComment(<?=$comment['idComment']?>)' id='downVoteComment()'>
+							<img src="./downvote1.png">
+						</button>
+					</div>
+				</div>
 				<?=$comment['username']?><br>
 				<?=$comment['Text']?><br><br><br>
 			<?php } ?>

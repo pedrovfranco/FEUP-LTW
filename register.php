@@ -30,11 +30,13 @@
 		}
 		else
 		{
-			$register = $dbh->prepare('INSERT INTO User VALUES (NULL, ?, ?, ?, ?)');
+			$register = $dbh->prepare('INSERT INTO User VALUES (NULL, ?, ?, ?, ?, ?)');
+
+			$pic = getShirtById(rand(0, 4));
 
 			$dbh->beginTransaction();
 
-			$status = $register->execute(array($username, $hash, $age, $email));
+			$status = $register->execute(array($username, $hash, $age, $email, $pic));
 
 			$dbh->commit();
 

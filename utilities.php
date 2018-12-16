@@ -65,6 +65,45 @@
 		}
 	}
 
+	function getShirtById($id)
+	{
+		if ($id == 0)
+		{
+			return "camisolas/benfica.png";
+		}
+		else if ($id == 1)
+		{
+			return "camisolas/porto.png";
+		}
+		else if ($id == 2)
+		{
+			return "camisolas/sporting.png";
+		}
+		else if ($id == 3)
+		{
+			return "camisolas/braga.png";
+		}
+		else if ($id == 4)
+		{
+			return "camisolas/guimaraes.png";
+		}
+	}
+
+	function getShirtHTML($id)
+	{
+		$pic = getShirtById($id);
+
+		echo "$pic";
+	}
+
+	function selectShirt($id, $inputPic)
+	{
+		if (getShirtById($id) == $inputPic)
+		{
+			echo "checked=\"checked\"";
+		}
+	}
+
 	function printConsole($data)
 	{
 	    $output = $data;

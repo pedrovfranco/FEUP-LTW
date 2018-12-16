@@ -8,7 +8,8 @@ CREATE TABLE User (
     username	VARCHAR (50) NOT NULL UNIQUE,
 	password	VARCHAR NOT NULL,
 	age 		INTEGER NOT NULL,
-	email		VARCHAR (100) NOT NULL UNIQUE
+	email		VARCHAR (100) NOT NULL UNIQUE,
+	pic			VARCHAR NOT NULL
 );
 
 CREATE TABLE Post (
@@ -37,13 +38,20 @@ CREATE TABLE Comment (
 	Downvotes	INTEGER
 );
 
-CREATE TABLE Votes (
-	idComment	INTEGER NOT NULL PRIMARY KEY,
+CREATE TABLE VotesPost (
 	idUser		INTEGER REFERENCES User (idUser),
 	idPost 		INTEGER REFERENCES Post (idPost),
 
-	Text		VARCHAR (500) NOT NULL,
+	value		INTEGER NOT NULL,
 
-	Upvotes		INTEGER,
-	Downvotes	INTEGER
+	PRIMARY KEY (idUser, idPost)
+);
+
+CREATE TABLE VotesComment (
+	idUser		INTEGER REFERENCES User (idUser),
+	idComment 	INTEGER REFERENCES Comment (idComment),
+
+	value		INTEGER NOT NULL,
+
+	PRIMARY KEY (idUser, idComment)
 );

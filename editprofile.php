@@ -8,6 +8,8 @@
 	$hash = hash('sha256', $_POST['password']);
 	$email = $_POST['email'];
 	$age = $_POST['age'];
+	$pic = getShirtById($_POST['team']);
+
 
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -22,8 +24,6 @@
 	$query1 = $dbh->prepare('SELECT * FROM User WHERE username = ?');
 	$query1->execute(array($username));
 
-	// $query0 = $dbh->prepare('SELECT * FROM User WHERE idUsername = :a')
-	// $query0->bindParam(':a', $idS);
 
 	if (count($query1->fetchAll()) > 0)
 	{
@@ -40,14 +40,37 @@
 		}
 		else
 		{
-			$query3 = $dbh->prepare('UPDATE User SET username = ?, password = ?, email = ?, age = ? WHERE idUser = ?');
-			$query3->execute(array($username, $hash, $email, $age, $id) );
-			$result = $query3->fetch();
+			if ($username != "")
+			{
+				$query3 = $dbh->prepare('UPDATE User SET username = ? WHERE idUser = ?');
+				$query3->execute(array($username, $id));
+			}
+
+			if ($_POST['password'] != "")
+			{
+				$query4 = $dbh->prepare('UPDATE User SET password = ? WHERE idUser = ?');
+				$query4->execute(array($hash, $id));
+			}
+
+			if ($email != "")
+			{
+				$query5 = $dbh->prepare('UPDATE User SET email = ? WHERE idUser = ?');
+				$query5->execute(array($email, $id));
+			}
+
+			if ($age != "")
+			{
+				$query6 = $dbh->prepare('UPDATE User SET age = ? WHERE idUser = ?');
+				$query6->execute(array($age, $id));
+			}
+
+			$query7 = $dbh->prepare('UPDATE User SET pic = ? WHERE idUser = ?');
+			$query7->execute(array($pic, $id));
+
+			header("Location: index.php");
+			
 		}
 	}
-
-
-	echo "<br><a href=\"index.html\">Go Back</a> </li>";
 
 
 ?>
