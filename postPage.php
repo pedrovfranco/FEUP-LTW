@@ -112,7 +112,7 @@
 
 				</header>
 
-				<p> Submited on <?= date('H:i:s Y-m-d', $Date)?> <a href="profile.php?id=<?= $idUser ?>" class='submitter'><?=$username?></a><br><br></p>
+				Submited on <?= date('H:i:s Y-m-d', $Date)?> <a href="profile.php?id=<?= $idUser ?>" class='submitter'><?=$username?></a><br><br>
 
 				<?php foreach ($paragraphs as $paragraph) { ?>
 				<p><?=$paragraph?><p>
