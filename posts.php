@@ -1,22 +1,32 @@
 <?php
-include_once("utilities.php");
+	include_once("utilities.php");
 
-ini_set('display_errors', 1);
+	ini_set('display_errors', 1);
 
-$dbh = new PDO('sqlite:database.db');
-$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+	$dbh = new PDO('sqlite:database.db');
+	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-$query = $dbh->prepare('SELECT * from Post');
+	$query = $dbh->prepare('SELECT * from Post');
 
-$status = $query->execute();
-if (!$status)
-{
-	echo "\nPDO::errorInfo():\n";
-	print_r($dbh->errorInfo());
-	echo "Error!<br>";
-}
+	$status = $query->execute();
+	if (!$status)
+	{
+		echo "\nPDO::errorInfo():\n";
+		print_r($dbh->errorInfo());
+		echo "Error!<br>";
+	}
 
-$posts = $query->fetchAll();
+	$postLimit = 5;
+	$posts = array();
+
+	for ($i = 0; $i < $postLimit; $i++)
+	{
+		$fetched = $query->fetch();
+		if ($fetched)
+			$posts[] = $fetched;
+	}
+
+
 ?>
 
 <!DOCTYPE <!DOCTYPE html>
@@ -26,7 +36,7 @@ $posts = $query->fetchAll();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="style.css" rel="stylesheet">
-	<script src="registerVote.js"></script>
+	<script src="orderPosts.js"></script>
 </head>
 <body>
 	<nav class='posts'>
@@ -65,46 +75,15 @@ $posts = $query->fetchAll();
 			</div>
 		</nav>
 		<div id="posts">
-			<?php foreach($posts as $post) { ?>
-
-			<div id="main" class="postPage">
-				<div class='post'>
-					<!-- <div class="post-number">1</div> -->
-					<div class="post-body">
-						<a href="postPage.php?id=<?=$post['idPost']?>" class='post-title'> <?=$post['Title']?> </a>
-						<p> Submited on <?=date('H:i:s Y-m-d', $post['Date']);?> <a href="#" class='submitter'> <?=getUsernameFromID($dbh, $post['idUser']);?></a><br><br></p>
-					</div>
-					<div class="post-votes">
-						<div class='ball up' >
-							<button onclick='upVote(<?=$post['idPost']?>)' id='upVote()'>
-								<img src="./upvote.jpg">
-							</button>
-						</div>
-						<div id="numberOfVotes<?=$post['idPost']?>"><?=$post['Upvotes']-$post['Downvotes']?></div>
-						<div class='ball down' id='downvote()'>
-							<button onclick='downVote(<?=$post['idPost']?>)' id='downVote()'>
-								<img src="./downvote1.png">
-							</button>
-						</div>
-					</div>
-					<div class='post-options'>
-						<span>1000 comments</span>
-						<span>share</span>
-						<span>save to favourite posts</span>
-						<span>report</span>
-					</div>
-				</div>
-			</div>
+			<?php include_once("orderPosts.php") ?>
+		
 		</div>
 
-		<br><br>
 
-		<?php } ?>
-		
-		<select onchange="myFunction()">
-		  <option value="top">top</option>
-		  <option value="most recent">most recent</option>
-		  <option value="most comments">most comments</option>
+		<select id="sort" onchange="orderPosts()">
+			<option value="most recent">most recent</option>
+			<option value="top">top</option>
+			<option value="most comments">most comments</option>
 		</select>
 
 

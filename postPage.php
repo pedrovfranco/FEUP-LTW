@@ -3,12 +3,16 @@
 
 	ini_set('display_errors', 1);
 
+	$idPost = $_GET['id'];
+
+	$idPost = preg_replace("/[^0-9]/", "", $idPost);
+
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 	$query1 = $dbh->prepare('SELECT * FROM Post WHERE idPost = ?');
 
-	$status1 = $query1->execute(array($_GET['id']));
+	$status1 = $query1->execute(array($idPost));
 
 	if (!$status1)
 	{
