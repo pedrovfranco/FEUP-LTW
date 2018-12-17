@@ -27,5 +27,5 @@
 	$idComment = $query->fetchAll()[0][0];
 
 
-	echo "$idComment|$username";
+	echo "$idComment|$id|$username";
 ?>

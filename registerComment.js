@@ -14,11 +14,13 @@ function registerComment(idPost)
 					alert(this.responseText.substring(6));
 				else
 				{
-					let id = this.responseText.substring(0, this.responseText.indexOf("|"));
-					let username = this.responseText.substring(this.responseText.indexOf("|")+1);
+					let params = this.responseText.split("|");
+					let id = params[0];
+					let idUser = params[1];
+					let username = params[2];
 
 					document.getElementById("comments").innerHTML += "<div class=\"comment-votes\">\n<div class='ball up' >\n<button onclick='upVoteComment(" + id + ")' id='upVoteComment()'>\n<img src=\"./upvote.jpg\">\n</button>\n</div>\n<div id=\"numberOfVotes" + id + "\">0</div>\n<div class='ball down' id='downvote()'>\n<button onclick='downVoteComment(" + id + ")' id='downVoteComment()'>\n<img src=\"./downvote1.png\">\n</button>\n</div>\n</div>";
-					document.getElementById("comments").innerHTML +="\n\n<div class=\"commentUsername\">\n<a href=\"profile.php?id="<?= $comment['idUser'] ?>" class='submitter'><?=$comment['username']?></a> <br>"	+ username + "<br>\n</div>\n<div class=\"commentText\">\n" + text + "<br><br><br>\n</div>";
+					document.getElementById("comments").innerHTML +="\n\n<div class=\"commentUsername\">\n<a href=\"profile.php?id=" + idUser + "\" class='submitter'>" + username + "</a> <br>\n</div>\n<div class=\"commentText\">\n" + text + "<br><br><br>\n</div>";
 					document.getElementById("commentText").value = "";
 
 				}
