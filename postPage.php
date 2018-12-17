@@ -77,6 +77,7 @@
 		<header>
 		</header>
 
+
 		<div class="postPageMenu">
 			<ul>
 				<?php
@@ -92,6 +93,10 @@
 					<?php endif; ?>
 			</ul>
 		</div>
+
+		<textarea id="commentText" placeholder="Comment here" rows="4" cols="40" maxlength="500" required></textarea>
+		<button id="submitComment" onclick="registerComment(<?=$idPost?>)" > Submit </button>
+
 
 		<section id="post">
 			<article>
@@ -126,19 +131,17 @@
 						</button>
 					</div>
 				</div>
+				<div class="commentUsername">
 				<?=$comment['username']?><br>
-				<?=$comment['Text']?><br><br><br>
-			<?php } ?>
+			</div>
+				<div class="commentText">
+					<?=$comment['Text']?><br><br><br>
+				</div>
+
+
+
+				<?php } ?>
 		</section>
-
-
-		<textarea id="commentText" placeholder="Comment here" rows="4" cols="40" maxlength="500" required></textarea>
-
-
-		<button id="submitComment" onclick="registerComment(<?=$idPost?>)" > Submit </button>
-
-
-
 
 	</body>
 </html>
