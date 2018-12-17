@@ -20,7 +20,7 @@
 	<div class="menu">
     	<h1><a href="index.html">The 12th Player </a></h1>
       <h2><a href="index.html">Welcome to our site ! </a></h2>
-    <ul>
+  		  <ul>
 			<?php
 				$id = loggedIn();
 				if ($id == -1) : ?>
@@ -46,6 +46,18 @@
       <img src="./posts.png">
     </a>
   </div>
+
+  <div class="sideBar">
+  	<ul>
+  		<li class="active"><a href="profile.php">Username</a>
+  			<ul>
+  				<li class="active"><a href="profile.php">Profile</a></li>
+  			</ul>
+  		</li>
+  	</ul>
+ </div>
+
+	
 	<footer>
 		<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
 	</footer>

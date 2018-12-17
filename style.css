@@ -31,23 +31,33 @@
 
 
 .menu h1 {
-	margin-left: 55%;
-	margin-top: 5%;
+	margin-left: 52%;
+	margin-top: 7%;
 	color: white;
 	font-family: "Times New Roman", Times, serif;
 	font-size: 100px;
 	position: absolute;
 	text-decoration: none;
+	text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .menu h2  {
-	margin-left: 40%;
-	margin-top: 27%;
+	margin-left: 38%;
+	margin-top: 29%;
 	color: white;
 	font-size: 50px;
 	position: absolute;
 	font-family: "Times New Roman", Times, serif;
 	text-decoration: none;
+	text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .menu h2 > a {
@@ -65,6 +75,7 @@
 	position: relative;
 	float: left;
 	list-style: none;
+	opacity: .9;
 }
 
 .menu > ul li
@@ -86,6 +97,10 @@
 	padding: 20px 30px;
 }
 
+.menu > ul li a:hover {
+	background-color: green;
+}
+
 .menu > ul li.active a{
 	border: 2px solid white;
 }
@@ -94,8 +109,8 @@
 .postIndex {
 	margin:auto auto;
 	position: relative;
-	margin-top: 29%;
-	margin-left: 29.5%;
+	margin-top: 32%;
+	margin-left: 29%;
 	/*padding: -160px;*/
 
 }
@@ -110,6 +125,53 @@
 	width: 15%;
 	height : 10%;
 }
+
+
+.sideBar > ul
+{
+	top: 0%;
+	right: 0%;
+	align-items: right;
+	position: absolute;
+	float: right;
+	list-style: none;
+}
+
+.sideBar > ul li
+{
+	opacity: .9;
+}
+
+.sideBar > ul li a
+{
+	display: block;
+	color: white;
+	background-color: black;
+	text-decoration: none;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 30px;
+	padding: 20px 30px;
+}
+
+.sideBar > ul li a:hover {
+	background-color: green;
+}
+
+.sideBar > ul li.active a{
+	border: 2px solid white;
+	display: block;
+}
+
+.sideBar > ul li ul li
+{
+	display: none;
+}
+
+.sideBar > ul li:hover ul li
+{
+	display: block;
+}
+
 
 /* REGISTER */
 .register
