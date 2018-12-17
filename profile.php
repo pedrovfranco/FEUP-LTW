@@ -25,8 +25,6 @@
 	$email = $row['email'];
 	$pic = $row['pic'];
 
-	echo "$id | $username | $password | $age | $email | $pic<br>";
-
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +42,7 @@
 	<div class="profile">
 		<h1>Profile</h1>
 		<h2> Edit your settings ! </h2>
-		<form action="editprofile.php" method="post">
+		<form action="updateprofile.php" method="post">
 			Username:<br>
     	<input type="text" name="username" value="">
 			<br>
@@ -58,27 +56,7 @@
 			<input type="number" min="13" max="120" name="age" value="">
 			<br>
 			<br>
-			<label class="big1">
-				<img src="<?php $id = 0; getShirtHTML($id); ?>" alt="Benfica" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?>>
-			</label>
-			<label class="big2">
-				<img src="<?php $id = 1; getShirtHTML($id); ?>" alt="Porto" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
-			</label>
-			<label class="big3">
-				<img src="<?php $id = 2; getShirtHTML($id); ?>" alt="Sporting" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
-			</label>
-			<label class="big4">
-				<img src="<?php $id = 3; getShirtHTML($id); ?>" alt="Braga" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
-			</label>
-			<label class="big5">
-				<img src="<?php $id = 4; getShirtHTML($id); ?>" alt="Guimarães" style="width:100px;height:100px;">
-				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
-			</label>
-
+			<img src="<?php $id = 0; getShirtHTML($id); ?>" alt="Benfica" style="width:100px;height:100px;">			
 			<br>
 			<br>
 			<input type="submit" value="Edit">

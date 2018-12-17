@@ -1,76 +1,105 @@
 <?php
-
-	include_once("utilities.php");
+ 	include_once("utilities.php");
 
 	ini_set('display_errors', 1);
 
-	$username = $_POST['username'];
-	$hash = hash('sha256', $_POST['password']);
-	$email = $_POST['email'];
-	$age = $_POST['age'];
-	$pic = getShirtById($_POST['team']);
-
-
-	$dbh = new PDO('sqlite:database.db');
-	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-
 	$id = loggedIn();
 
-	if($id == -1)
+	if ($id == -1)
 	{
-		echo "You aren't logged in, you can't edit your profile !";
+		header("Location: login.html");
+		die();
 	}
 
-	$query1 = $dbh->prepare('SELECT * FROM User WHERE username = ?');
-	$query1->execute(array($username));
+ 	$dbh = new PDO('sqlite:database.db');
+	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
+	$query = $dbh->prepare('SELECT * FROM User WHERE idUser = ? ');
+	$query->execute(array($id));
 
-	if (count($query1->fetchAll()) > 0)
-	{
-		echo "Username already taken!<br>";
-	}
-	else
-	{
-		$query2 = $dbh->prepare('SELECT * FROM User WHERE email = ?');
-		$query2->execute(array($email));
+	$row = $query->fetchAll()[0];
 
-		if (count($query2->fetchAll()) > 0)
-		{
-			echo "Email already taken!<br>";
-		}
-		else
-		{
-			if ($username != "")
-			{
-				$query3 = $dbh->prepare('UPDATE User SET username = ? WHERE idUser = ?');
-				$query3->execute(array($username, $id));
-			}
+	$username = $row['username'];
+	$password = $row['password'];
+	$age = $row['age'];
+	$email = $row['email'];
+	$pic = $row['pic'];
 
-			if ($_POST['password'] != "")
-			{
-				$query4 = $dbh->prepare('UPDATE User SET password = ? WHERE idUser = ?');
-				$query4->execute(array($hash, $id));
-			}
-
-			if ($email != "")
-			{
-				$query5 = $dbh->prepare('UPDATE User SET email = ? WHERE idUser = ?');
-				$query5->execute(array($email, $id));
-			}
-
-			if ($age != "")
-			{
-				$query6 = $dbh->prepare('UPDATE User SET age = ? WHERE idUser = ?');
-				$query6->execute(array($age, $id));
-			}
-
-			$query7 = $dbh->prepare('UPDATE User SET pic = ? WHERE idUser = ?');
-			$query7->execute(array($pic, $id));
-
-			header("Location: index.php");
-			die();
-		}
-	}
-
+	echo "$id | $username | $password | $age | $email | $pic<br>";
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title> LTW </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<?php
+
+    if ($id != -1) : ?>
+	<div class="profile">
+		<h1>Profile</h1>
+		<h2> Edit your settings ! </h2>
+		<form action="updateprofile.php" method="post">
+			Username:<br>
+    	<input type="text" name="username" value="">
+			<br>
+			Password:<br>
+			<input type="password" name="password" value="">
+			<br>
+			E-mail:<br>
+			<input type="email" name="email" value="">
+			<br>
+			Age:<br>
+			<input type="number" min="13" max="120" name="age" value="">
+			<br>
+			<br>
+			<label class="big1">
+				<img src="<?php $id = 0; getShirtHTML($id); ?>" alt="Benfica" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?>>
+			</label>
+			<label class="big2">
+				<img src="<?php $id = 1; getShirtHTML($id); ?>" alt="Porto" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
+			</label>
+			<label class="big3">
+				<img src="<?php $id = 2; getShirtHTML($id); ?>" alt="Sporting" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
+			</label>
+			<label class="big4">
+				<img src="<?php $id = 3; getShirtHTML($id); ?>" alt="Braga" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
+			</label>
+			<label class="big5">
+				<img src="<?php $id = 4; getShirtHTML($id); ?>" alt="Guimarães" style="width:100px;height:100px;">
+				<input type="radio" name="team" value="<?=$id?>" <?php selectShirt($id, $pic); ?> >
+			</label>
+
+			<br>
+			<br>
+			<input type="submit" value="Edit">
+
+		</form>
+	</div>
+	<?php else : ?>
+		<div class="profileError">
+			<h1> You can't acess your profile if you're not logged in ! </h1>
+		</div>
+	<?php endif; ?>
+
+	<div class="returnProfile">
+	<a href="index.php">
+		<img src="./12th.png">
+	</a>
+	</div>
+
+<footer>
+	<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
+</footer>
+
+</body>
+</html>
