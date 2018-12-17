@@ -27,7 +27,7 @@ function registerComment(idPost)
 			}
 		};
 
-		xhttp.open("POST", "registerComment.php", true);
+		xhttp.open("POST", "changePostOrder.php", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send("idPost=" + idPost + "&text=" + text);
 	}

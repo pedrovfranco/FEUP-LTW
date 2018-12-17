@@ -39,7 +39,6 @@
 	}
 
 	$idQuery = $dbh->prepare("SELECT last_insert_rowid()");
-
 	$status2 = $idQuery->execute();
 
 	if (!$status2)

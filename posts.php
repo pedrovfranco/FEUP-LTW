@@ -97,19 +97,15 @@ $posts = $query->fetchAll();
 			</div>
 		</div>
 
-			<br><br>
+		<br><br>
 
 		<?php } ?>
-		  <!--  <div class="buttons">
-		   	<a href="" class="btn1"> Best goals and skills </a>
-		   	<a href="" class="btn2"> Best tackles </a>
-		   </div> -->
+		
+		<select onchange="myFunction()">
+		  <option value="top">top</option>
+		  <option value="most recent">most recent</option>
+		  <option value="most comments">most comments</option>
+		</select>
 
-       <!-- <div class='search-bar'>
-				<input type="text" placeholder="search" class="search">
-				<button class='search-button'>
-					<a href='#'><img src="./lupa.png"></a>
-				</button>
-			</div>  -->
-		</body>
+
 		</html>
