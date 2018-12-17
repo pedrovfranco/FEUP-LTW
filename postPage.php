@@ -122,27 +122,28 @@
 
 		<section id="comments">
 			<?php foreach ($comments as $comment) { ?>
-				<div class="comment-votes">
-					<div class='ball up' >
-						<button onclick='upVoteComment(<?=$comment['idComment']?>)' id='upVoteComment()'>
-							<img src="./upvote.jpg">
-						</button>
+				<div id="comment<?=$comment['idComment']?>">
+					<div class="comment-votes">
+						<div class='ball up' >
+							<button onclick='upVoteComment(<?=$comment['idComment']?>)' id='upVoteComment()'>
+								<img src="./upvote.jpg">
+							</button>
+						</div>
+						<div id="numberOfVotes<?=$comment['idComment']?>"><?=$comment['Upvotes']-$comment['Downvotes']?></div>
+						<div class='ball down' id='downvote()'>
+							<button onclick='downVoteComment(<?=$comment['idComment']?>)' id='downVoteComment()'>
+								<img src="./downvote1.png">
+							</button>
+						</div>
 					</div>
-					<div id="numberOfVotes<?=$comment['idComment']?>"><?=$comment['Upvotes']-$comment['Downvotes']?></div>
-					<div class='ball down' id='downvote()'>
-						<button onclick='downVoteComment(<?=$comment['idComment']?>)' id='downVoteComment()'>
-							<img src="./downvote1.png">
-						</button>
+					<div class="commentUsername">
+						<?=$comment['username']?><br>
 					</div>
-				</div>
-				<div class="commentUsername">
-				<?=$comment['username']?><br>
-			</div>
-				<div class="commentText">
-					<?=$comment['Text']?><br><br><br>
-				</div>
+					<div class="commentText">
+						<?=$comment['Text']?><br><br><br>
+					</div>
 
-
+				</div>
 
 				<?php } ?>
 		</section>

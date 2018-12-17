@@ -41,8 +41,8 @@
 		echo "Error!<br>";
     }
     
-    $commentLimit = 5;
-	$comments = array();
+    $postLimit = 5;
+	$posts = array();
 
 	for ($i = 0; $i < $postLimit; $i++)
 	{
@@ -51,23 +51,24 @@
 			$posts[] = $fetched;
 	}
 
-	// $query = $dbh->prepare('SELECT P.Title FROM User U, Post P WHERE U.idUser = P.idUser AND U.idUser = ?');    
-	// if (!$query->execute(array($id)))
-	// {
-	// 	echo "\nPDO::errorInfo():\n";
-	// 	print_r($dbh->errorInfo());
-	// 	echo "Error!<br>";
-    // }
+	$query = $dbh->prepare('SELECT C.idComment, C.idPost FROM User U, Comment C WHERE U.idUser = C.idUser AND U.idUser = ?');    
+	if (!$query->execute(array($id)))
+	{
+		echo "\nPDO::errorInfo():\n";
+		print_r($dbh->errorInfo());
+		echo "Error!<br>";
+    }
     
-    // $postLimit = 5;
-	// $posts = array();
+    $commentLimit = 5;
+	$comments = array();
 
-	// for ($i = 0; $i < $postLimit; $i++)
-	// {
-	// 	$fetched = $query->fetch();
-	// 	if ($fetched)
-	// 		$posts[] = $fetched;
-	// }
+	for ($i = 0; $i < $commentLimit; $i++)
+	{
+		$fetched = $query->fetch();
+		if ($fetched)
+			$comments[] = $fetched;
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +88,7 @@
         <br><br><br><br><br><br><br>
         <img src="<?= $pic ?>" style="width:100px;height:120px;">
         
-        <div class="posts">
+        <!-- <div class="posts">
             <?php 
 
                 foreach($posts as $post)
@@ -102,21 +103,27 @@
 
             ?>
 
-        </div>
+        </div> -->
 
-        <br><br><br><br><br>
+        <br><br>
 
         <div class="comments">
             <?php 
 
-                foreach($posts as $post)
+                foreach($comments as $comment)
                 {
-                    $idPost = $post['idPost'];
-                    $Title = $post['Title'];
-                    $Date = $post['Date'];
-                    $dateString = date('H:i:s Y-m-d', $Date);
+                    $idComment = $comment['idComment'];
+                    $idPost = $comment['idPost'];
 
-                    echo "$username posted <a href=\"postPage.php?id=$idPost\">$Title</a> at $dateString<br><br>";
+                    for ($i = 0; $i < count($posts); $i++)
+                    {
+                        if ($posts[$i]['idPost'] == $idPost)
+                        {
+                            $Title = $posts[$i]['Title'];
+                        }
+                    }
+
+                    echo "$username commented on <a href=\"postPage.php?id=$idPost#comment$idComment\">$Title</a><br><br>";
                 }
 
             ?>

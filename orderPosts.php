@@ -11,15 +11,15 @@
 
 	if ($orderType == "top")
 	{
-		$query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date, P.idUser, P.Upvotes, P.Downvotes, U.username, P.Upvotes-P.Downvotes votes, count(C.idComment) commentCount from Post P, User U LEFT OUTER JOIN Comment C ON P.idPost = C.idPost WHERE p.idUser = U.idUser GROUP BY P.idPost ORDER BY votes DESC');
+		$query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date, P.idUser, P.Upvotes, P.Downvotes, U.username, P.Upvotes-P.Downvotes votes, count(C.idComment) commentCount from Post P, User U LEFT OUTER JOIN Comment C ON P.idPost = C.idPost WHERE P.idUser = U.idUser GROUP BY P.idPost ORDER BY votes DESC');
 	}
 	else if ($orderType == "most recent")
 	{
-		$query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date, P.idUser, P.Upvotes, P.Downvotes, U.username, count(C.idComment) commentCount from Post P, User U LEFT OUTER JOIN Comment C ON P.idPost = C.idPost WHERE p.idUser = U.idUser GROUP BY P.idPost ORDER BY Date DESC');
+		$query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date, P.idUser, P.Upvotes, P.Downvotes, U.username, count(C.idComment) commentCount from Post P, User U LEFT OUTER JOIN Comment C ON P.idPost = C.idPost WHERE P.idUser = U.idUser GROUP BY P.idPost ORDER BY Date DESC');
 	}
 	else if ($orderType == "most comments")
 	{
-		$query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date, P.idUser, P.Upvotes, P.Downvotes, U.username, count(C.idComment) commentCount from Post P, User U LEFT OUTER JOIN Comment C ON P.idPost = C.idPost WHERE p.idUser = U.idUser GROUP BY P.idPost ORDER BY commentCount DESC');
+		$query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date, P.idUser, P.Upvotes, P.Downvotes, U.username, count(C.idComment) commentCount from Post P, User U LEFT OUTER JOIN Comment C ON P.idPost = C.idPost WHERE P.idUser = U.idUser GROUP BY P.idPost ORDER BY commentCount DESC');
 	}
 	else
 	{
