@@ -3,7 +3,10 @@
 
 	ini_set('display_errors', 1);
 
-	$id = loggedIn();
+    if (isset($_GET['id']))
+	    $id = preg_replace("/[^0-9]/", "", $_GET['id']);
+    else
+        $id = loggedIn();
 
 	if ($id == -1)
 	{
@@ -15,16 +18,56 @@
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 	$query = $dbh->prepare('SELECT * FROM User WHERE idUser = ? ');
-	$query->execute(array($id));
+	if (!$query->execute(array($id)))
+	{
+		echo "\nPDO::errorInfo():\n";
+		print_r($dbh->errorInfo());
+		echo "Error!<br>";
+	}
 
-	$row = $query->fetchAll()[0];
+	$row = $query->fetch();
 
 	$username = $row['username'];
-	$password = $row['password'];
 	$age = $row['age'];
 	$email = $row['email'];
-	$pic = $row['pic'];
+    $pic = $row['pic'];
+    
 
+    $query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date FROM User U, Post P WHERE U.idUser = P.idUser AND U.idUser = ?');
+    if (!$query->execute(array($id)))
+	{
+		echo "\nPDO::errorInfo():\n";
+		print_r($dbh->errorInfo());
+		echo "Error!<br>";
+    }
+    
+    $postLimit = 5;
+	$posts = array();
+
+	for ($i = 0; $i < $postLimit; $i++)
+	{
+		$fetched = $query->fetch();
+		if ($fetched)
+			$posts[] = $fetched;
+	}
+
+	// $query = $dbh->prepare('SELECT P.Title FROM User U, Post P WHERE U.idUser = P.idUser AND U.idUser = ?');    
+	// if (!$query->execute(array($id)))
+	// {
+	// 	echo "\nPDO::errorInfo():\n";
+	// 	print_r($dbh->errorInfo());
+	// 	echo "Error!<br>";
+    // }
+    
+    // $postLimit = 5;
+	// $posts = array();
+
+	// for ($i = 0; $i < $postLimit; $i++)
+	// {
+	// 	$fetched = $query->fetch();
+	// 	if ($fetched)
+	// 		$posts[] = $fetched;
+	// }
 ?>
 
 <!DOCTYPE html>
@@ -36,38 +79,33 @@
 	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-	<?php
 
-    if ($id != -1) : ?>
-	<div class="profile">
+    <div class="profile">
 		<h1>Profile</h1>
 		<h2> Edit your settings ! </h2>
-		<form action="updateprofile.php" method="post">
-			Username:<br>
-    	<input type="text" name="username" value="">
-			<br>
-			Password:<br>
-			<input type="password" name="password" value="">
-			<br>
-			E-mail:<br>
-			<input type="email" name="email" value="">
-			<br>
-			Age:<br>
-			<input type="number" min="13" max="120" name="age" value="">
-			<br>
-			<br>
-			<img src="<?php $id = 0; getShirtHTML($id); ?>" alt="Benfica" style="width:100px;height:100px;">			
-			<br>
-			<br>
-			<input type="submit" value="Edit">
 
-		</form>
-	</div>
-	<?php else : ?>
-		<div class="profileError">
-			<h1> You can't acess your profile if you're not logged in ! </h1>
-		</div>
-	<?php endif; ?>
+        <br><br><br><br><br><br><br>
+		<img src="<?= $pic ?>" style="width:100px;height:120px;">			
+
+    </div>
+    
+    <div class="posts">
+        
+    <?php 
+
+        foreach($posts as $post)
+        {
+            $idPost = $post['idPost'];
+            $Title = $post['Title'];
+            $Date = $post['Date'];
+            $dateString = date('H:i:s Y-m-d', $Date);
+
+            echo "$username posted <a href=\"postPage.php?id=$idPost\">$Title</a> at $dateString<br><br>";
+        }
+
+    ?>
+
+    </div>
 
 	<div class="returnProfile">
 	<a href="index.php">

@@ -675,8 +675,8 @@ footer
 
 #comments .commentText {
 color: white;
-font-size: 200%;
-margin-top: 5%;
+font-size: 130%;
+margin-top: 12.5%;
 background-color: grey;
 text-shadow:
 -1px -1px 0 #000,
@@ -689,7 +689,7 @@ text-shadow:
 text-align: right;
 color: white;
 font-size: 150%;
-margin-top: -30%;
+margin-top: -35.5%;
 margin-bottom: 0%;
 background-color: black;
 text-shadow:
@@ -703,8 +703,8 @@ text-shadow:
 {
 	position: fixed;
 	height: 20%;
-	margin-left: 5%;
-	margin-top: 7%;
+	margin-left: 77%;
+	margin-top: 5%;
 }
  #submitComment
 {
@@ -719,10 +719,25 @@ text-shadow:
 	height: 5%;
 	width: 5%;
 	margin-top: 10%;
-	margin-left: 17%;
+	margin-left: 90%;
 }
 
 /**/
+
+#sort
+{
+	position: fixed;
+	right: 0%; 
+	bottom: 78%;
+	height: 5%; 
+	background-color: black;
+	color: yellow;
+}
+
+#sort select {
+  background-color: white;
+  position: fixed;
+}
 
 nav
 {

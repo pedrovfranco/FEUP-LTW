@@ -45,8 +45,6 @@
 			$posts[] = $fetched;
 	}
 
-	console_log($posts);
-
 	$return = "";
 
 	foreach($posts as $post)
@@ -63,9 +61,6 @@
 		$dateString = date('H:i:s Y-m-d', $Date);
 
 		$username = getUsernameFromID($dbh, $idUser);
-
-		console_log($idUser);
-		console_log($username);
 
 		$return .= 
 		"\n\n<div id=\"main\" class=\"postPage\">
