@@ -24,6 +24,7 @@
 	else
 	{
 		echo "Error.Undefined orderType!";
+		die();
 	}
 
 	$status = $query->execute();
@@ -72,7 +73,7 @@
 					<!-- <div class=\"post-number\">1</div> -->
 					<div class=\"post-body\">
 						<a href=\"postPage.php?id=$idPost\" class='post-title'> $Title </a>
-						<p> Submited on $dateString <a href=\"#\" class='submitter'> $username </a><br><br></p>
+						<p> Submited on $dateString <a href=\"#\" class='submitter'>$username</a><br><br></p>
 					</div>
 					<div class=\"post-votes\">
 						<div class='ball up' >
