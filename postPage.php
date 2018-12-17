@@ -30,6 +30,7 @@
 
 		$idPost = $post['idPost'];
 		$idUser = $post['idUser'];
+		$username = getUsernameFromID($dbh, $idUser);
 		$Title = $post['Title'];
 		$Text = $post['Text'];
 		$Link = $post['Link'];
@@ -89,11 +90,11 @@
 					if ($id == -1) : ?>
 						<li class="active"> <a href="register.html">Register</a> </li>
 						<li class="active"> <a href="login.html">Login</a> </li>
-						<li class="active"> <a href="about.html">About</a> </li>
+						<li class="active"> <a href="index.php">Home</a> </li>
 					<?php else : ?>
-						<li class="active"> <a href="logout.php">Logout</a> </li>
-						<li class="active"> <a href="about.html">About</a> </li>
 						<li class="active"> <a href="profile.php">Profile</a> </li>
+						<li class="active"> <a href="logout.php">Logout</a> </li>
+						<li class="active"> <a href="index.php">Home</a> </li>
 					<?php endif; ?>
 			</ul>
 		</div>
@@ -110,6 +111,9 @@
 					</h1>
 
 				</header>
+
+				<p> Submited on <?= date('H:i:s Y-m-d', $Date)?> <a href="profile.php?id=<?= $idUser ?>" class='submitter'><?=$username?></a><br><br></p>
+
 				<?php foreach ($paragraphs as $paragraph) { ?>
 				<p><?=$paragraph?><p>
 				<?php } ?>
@@ -137,7 +141,7 @@
 						</div>
 					</div>
 					<div class="commentUsername">
-						<?=$comment['username']?><br>
+						<a href="profile.php?id=<?= $comment['idUser'] ?>" class='submitter'><?=$comment['username']?></a> <br>
 					</div>
 					<div class="commentText">
 						<?=$comment['Text']?><br><br><br>

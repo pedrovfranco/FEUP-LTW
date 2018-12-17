@@ -1,5 +1,6 @@
 <?php
  	include_once("utilities.php");
+    include_once("karma.php");
 
 	ini_set('display_errors', 1);
 
@@ -83,12 +84,25 @@
 
     <div class="profile">
 		<h1>Profile</h1>
-		<h2> Edit your settings ! </h2>
 
-        <br><br><br><br><br><br><br>
+        <br><br><br>
+        
+        Karma: <?php karma($id); ?><br><br>
+
+        <div class="profileUsername">
+			username: <a><?=$username?></a><br>
+		</div>
+		<div class="profileEmail">
+			email: <a><?=$email?></a><br>
+		</div>
+		<div class="profileAge">
+			age: <a><?=$age?></a><br>
+		</div>
+        
+        <br><br><br><br>
         <img src="<?= $pic ?>" style="width:100px;height:120px;">
         
-        <!-- <div class="posts">
+        <div class="posts">
             <?php 
 
                 foreach($posts as $post)
@@ -103,7 +117,7 @@
 
             ?>
 
-        </div> -->
+        </div>
 
         <br><br>
 

@@ -319,16 +319,15 @@ footer
 
 .profile h1
 {
-	top: 85px;
 	position: relative;
-	left: -200px;
+	top: 10%; 
 	font-size: 120px;
-	margin-left: 10%
+	margin-left: -10%
 }
 
 .profile h2
 {
-	top: 60px;
+	top: 10%;
 	position: relative;
 	left: -215px;
 	font-size: 80px;
@@ -443,9 +442,9 @@ footer
 
 .postItself h1
 {
-	font-size: 300%;
+	font-size: 265%;
 	color: white;
-	margin-top: 3%;
+	margin-top: 4%;
 	margin-left: 45%;
 }
 

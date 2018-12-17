@@ -49,9 +49,9 @@
 
   <div class="sideBar">
   	<ul>
-  		<li class="active"><a href="profile.php">Username</a>
+  		<li class="active"><a href="profile.php">Profile</a>
   			<ul>
-  				<li class="active"><a href="profile.php">Profile</a></li>
+  				<li class="active"><a href="editprofile.php">Edit Profile</a></li>
   			</ul>
   		</li>
   	</ul>
