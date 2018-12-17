@@ -37,6 +37,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="style.css" rel="stylesheet">
 	<script src="orderPosts.js"></script>
+	<script src="registerVote.js"></script>
 </head>
 <body>
 	<nav class='posts'>

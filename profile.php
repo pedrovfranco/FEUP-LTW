@@ -41,8 +41,8 @@
 		echo "Error!<br>";
     }
     
-    $postLimit = 5;
-	$posts = array();
+    $commentLimit = 5;
+	$comments = array();
 
 	for ($i = 0; $i < $postLimit; $i++)
 	{
@@ -85,25 +85,43 @@
 		<h2> Edit your settings ! </h2>
 
         <br><br><br><br><br><br><br>
-		<img src="<?= $pic ?>" style="width:100px;height:120px;">			
-
-    </div>
-    
-    <div class="posts">
+        <img src="<?= $pic ?>" style="width:100px;height:120px;">
         
-    <?php 
+        <div class="posts">
+            <?php 
 
-        foreach($posts as $post)
-        {
-            $idPost = $post['idPost'];
-            $Title = $post['Title'];
-            $Date = $post['Date'];
-            $dateString = date('H:i:s Y-m-d', $Date);
+                foreach($posts as $post)
+                {
+                    $idPost = $post['idPost'];
+                    $Title = $post['Title'];
+                    $Date = $post['Date'];
+                    $dateString = date('H:i:s Y-m-d', $Date);
 
-            echo "$username posted <a href=\"postPage.php?id=$idPost\">$Title</a> at $dateString<br><br>";
-        }
+                    echo "$username posted <a href=\"postPage.php?id=$idPost\">$Title</a> at $dateString<br><br>";
+                }
 
-    ?>
+            ?>
+
+        </div>
+
+        <br><br><br><br><br>
+
+        <div class="comments">
+            <?php 
+
+                foreach($posts as $post)
+                {
+                    $idPost = $post['idPost'];
+                    $Title = $post['Title'];
+                    $Date = $post['Date'];
+                    $dateString = date('H:i:s Y-m-d', $Date);
+
+                    echo "$username posted <a href=\"postPage.php?id=$idPost\">$Title</a> at $dateString<br><br>";
+                }
+
+            ?>
+
+        </div>
 
     </div>
 
