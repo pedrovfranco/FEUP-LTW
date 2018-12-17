@@ -75,6 +75,7 @@
 	<title> LTW </title>
 	<meta charset="UTF-8">
 	<link href="style.css" rel="stylesheet">
+	<script src="registerVote.js"></script>
 	<script src="registerComment.js"></script>
 	<script src="registerCommentVote.js"></script>
 </head>
@@ -114,6 +115,20 @@
 
 				Submited on <?= date('H:i:s Y-m-d', $Date)?> <a href="profile.php?id=<?= $idUser ?>" class='submitter'><?=$username?></a><br><br>
 
+				<div class="post-votes">
+					<div class='ball up' >
+						<button onclick='upVote(<?=$idPost?>)' id='upVote()'>
+							<img src="./upvote.jpg">
+						</button>
+					</div>
+					<div id="numberOfVotesPost<?=$idPost?>"><?= $Upvotes-$Downvotes?></div>
+					<div class='ball down' id='downvote()'>
+						<button onclick='downVote(<?=$idPost?>)' id='downVote()'>
+							<img src="./downvote1.png">
+						</button>
+					</div>
+				</div>
+
 				<?php foreach ($paragraphs as $paragraph) { ?>
 				<p><?=$paragraph?><p>
 				<?php } ?>
@@ -133,7 +148,7 @@
 								<img src="./upvote.jpg">
 							</button>
 						</div>
-						<div id="numberOfVotes<?=$comment['idComment']?>"><?=$comment['Upvotes']-$comment['Downvotes']?></div>
+						<div id="numberOfVotesComment<?=$comment['idComment']?>"><?=$comment['Upvotes']-$comment['Downvotes']?></div>
 						<div class='ball down' id='downvote()'>
 							<button onclick='downVoteComment(<?=$comment['idComment']?>)' id='downVoteComment()'>
 								<img src="./downvote1.png">

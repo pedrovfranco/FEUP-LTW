@@ -20,7 +20,7 @@ function registerVote(id, voteType)
 			if (this.responseText.substring(0, 6) == "Error.")
 				alert(this.responseText.substring(6));
 			else
-	  			document.getElementById("numberOfVotes"+id).innerHTML = this.responseText;
+				document.getElementById("numberOfVotesPost"+id).innerHTML = this.responseText;
 		}
 	};
 

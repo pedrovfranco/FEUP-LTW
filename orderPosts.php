@@ -76,7 +76,7 @@
 								<img src=\"./upvote.jpg\">
 							</button>
 						</div>
-						<div id=\"numberOfVotes$idPost\">$Votes</div>
+						<div id=\"numberOfVotesPost$idPost\">$Votes</div>
 						<div class='ball down' id='downvote()'>
 							<button onclick='downVote($idPost)' id='downVote()'>
 								<img src=\"./downvote1.png\">
