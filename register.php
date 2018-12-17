@@ -48,7 +48,10 @@
 			    echo "Error on insert!<br>";
 			}
 			else
-				echo "Register sucessful!<br>";
+			{
+				header("Location: index.php");
+				die();
+			}
 		}
 	}
 

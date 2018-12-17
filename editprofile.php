@@ -68,7 +68,7 @@
 			$query7->execute(array($pic, $id));
 
 			header("Location: index.php");
-			
+			die();
 		}
 	}
 
