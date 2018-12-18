@@ -49,6 +49,26 @@
 			}
 			else
 			{
+				$idQuery = $dbh->prepare("SELECT last_insert_rowid()");
+				if (!$idQuery->execute())
+				{
+				    echo "\nPDO::errorInfo():\n";
+				    print_r($dbh->errorInfo());
+
+				    echo "Error on insert!<br>";
+				}
+
+				$id = $idQuery->fetch()[0];
+
+				$session = session_start();
+				if (!$session)
+				{
+					echo "Session starting failed!<br>";
+					exit(1);
+				}
+
+				$_SESSION['id'] = $id;
+
 				header("Location: index.php");
 				die();
 			}

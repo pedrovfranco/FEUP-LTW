@@ -69,23 +69,23 @@
 	{
 		if ($id == 0)
 		{
-			return "camisolas/benfica.png";
+			return "images/camisolas/benfica.png";
 		}
 		else if ($id == 1)
 		{
-			return "camisolas/porto.png";
+			return "images/camisolas/porto.png";
 		}
 		else if ($id == 2)
 		{
-			return "camisolas/sporting.png";
+			return "images/camisolas/sporting.png";
 		}
 		else if ($id == 3)
 		{
-			return "camisolas/braga.png";
+			return "images/camisolas/braga.png";
 		}
 		else if ($id == 4)
 		{
-			return "camisolas/guimaraes.png";
+			return "images/camisolas/guimaraes.png";
 		}
 	}
 

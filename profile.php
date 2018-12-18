@@ -26,7 +26,11 @@
 		echo "Error!<br>";
 	}
 
-	$row = $query->fetch();
+	if (!($row = $query->fetch()))
+	{
+		header("Location: index.php");
+		die();
+	}
 
 	$username = $row['username'];
 	$age = $row['age'];
@@ -80,29 +84,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="style.css" rel="stylesheet">
 </head>
-<body>
+<body id="profileBody">
 
-    <div class="profile">
+    <div class="profileViewer">
 		<h1>Profile</h1>
 
         <br><br><br>
         
-        Karma: <?php karma($id); ?><br><br>
+
+
+        <div class="profileKarma">
+        	Information: <br><br>
+        	Karma: <?php karma($id); ?><br><br>
+    	</div>
 
         <div class="profileUsername">
-			username: <a><?=$username?></a><br>
+			Username: <a><?=$username?></a><br><br>
 		</div>
 		<div class="profileEmail">
-			email: <a><?=$email?></a><br>
+			Email: <a><?=$email?></a><br><br>
 		</div>
 		<div class="profileAge">
-			age: <a><?=$age?></a><br>
+			Age: <a><?=$age?></a><br><br>
 		</div>
         
         <br><br><br><br>
-        <img src="<?= $pic ?>" style="width:100px;height:120px;">
         
-        <div class="posts">
+        <div class="profilePicture">
+        	Current Shirt: <br><br>
+        	<img src="<?= $pic ?>" style="width:100px;height:120px;"><br><br>
+        </div>
+
+        <div class="profilePosts">
+            Recent Activity: <br><br>
             <?php 
 
                 foreach($posts as $post)
@@ -121,7 +135,7 @@
 
         <br><br>
 
-        <div class="comments">
+        <div class="profileComments">
             <?php 
 
                 foreach($comments as $comment)
@@ -146,9 +160,9 @@
 
     </div>
 
-	<div class="returnProfile">
+	<div class="returnProfileViewer">
 	<a href="index.php">
-		<img src="./12th.png">
+		<img src="images/12th.png">
 	</a>
 	</div>
 

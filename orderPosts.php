@@ -1,14 +1,11 @@
 <?php
-
 	include_once("utilities.php");
 	
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-
 	$orderType = "most recent";
 	if (isset($_REQUEST['orderType']))
 		$orderType = $_REQUEST['orderType'];
-
 	if ($orderType == "top")
 	{
 		$query = $dbh->prepare('SELECT P.idPost, P.Title, P.Date, P.idUser, P.Upvotes, P.Downvotes, U.username, P.Upvotes-P.Downvotes votes, count(C.idComment) commentCount from Post P, User U LEFT OUTER JOIN Comment C ON P.idPost = C.idPost WHERE P.idUser = U.idUser GROUP BY P.idPost ORDER BY votes DESC');
@@ -26,7 +23,6 @@
 		echo "Error.Undefined orderType!";
 		die();
 	}
-
 	$status = $query->execute();
 	if (!$status)
 	{
@@ -34,19 +30,15 @@
 		print_r($dbh->errorInfo());
 		echo "Error!<br>";
 	}
-
 	$postLimit = 5;
 	$posts = array();
-
 	for ($i = 0; $i < $postLimit; $i++)
 	{
 		$fetched = $query->fetch();
 		if ($fetched)
 			$posts[] = $fetched;
 	}
-
 	$return = "";
-
 	foreach($posts as $post)
 	{
 		$idPost = $post['idPost'];
@@ -56,30 +48,27 @@
 		$Upvotes = $post['Upvotes'];
 		$Downvotes = $post['Downvotes'];
 		$commentCount = $post['commentCount'];
-
 		$Votes = $Upvotes-$Downvotes;
 		$dateString = date('H:i:s Y-m-d', $Date);
-
 		$username = getUsernameFromID($dbh, $idUser);
-
 		$return .= 
 		"\n\n<div id=\"main\" class=\"postPage\">
 				<div class='post'>
 					<!-- <div class=\"post-number\">1</div> -->
 					<div class=\"post-body\">
 						<a href=\"postPage.php?id=$idPost\" class='post-title'> $Title </a>
-						<p> Submited on $dateString <a href=\"#\" class='submitter'>$username</a><br><br></p>
+						<p> Submited on $dateString by <a href=\"profile.php?id=$idUser\" class='submitter'>$username</a><br><br></p>
 					</div>
 					<div class=\"post-votes\">
 						<div class='ball up' >
 							<button onclick='upVote($idPost)' id='upVote()'>
-								<img src=\"./upvote.jpg\">
+								<img src=\"./images/upvote.jpg\">
 							</button>
 						</div>
 						<div id=\"numberOfVotesPost$idPost\">$Votes</div>
 						<div class='ball down' id='downvote()'>
 							<button onclick='downVote($idPost)' id='downVote()'>
-								<img src=\"./downvote1.png\">
+								<img src=\"images/downvote1.png\">
 							</button>
 						</div>
 					</div>
@@ -92,7 +81,5 @@
 				</div>
 			</div>";
 	}
-
 	echo "$return";
-
 ?>

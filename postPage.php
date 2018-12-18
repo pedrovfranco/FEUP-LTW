@@ -1,33 +1,22 @@
 <?php
 	include_once("utilities.php");
-
 	ini_set('display_errors', 1);
-
 	$idPost = $_GET['id'];
-
 	$idPost = preg_replace("/[^0-9]/", "", $idPost);
-
 	$dbh = new PDO('sqlite:database.db');
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
 	$query1 = $dbh->prepare('SELECT * FROM Post WHERE idPost = ?');
-
 	$status1 = $query1->execute(array($idPost));
-
 	if (!$status1)
 	{
 		echo "\nPDO::errorInfo():\n";
 		print_r($dbh->errorInfo());
-
 		echo "Error!<br>";
 	}
-
 	$fetched1 = $query1->fetchAll();
-
 	if (count($fetched1) == 1)
 	{
 		$post = $fetched1[0];
-
 		$idPost = $post['idPost'];
 		$idUser = $post['idUser'];
 		$username = getUsernameFromID($dbh, $idUser);
@@ -37,9 +26,7 @@
 		$Date = $post['Date'];
 		$Upvotes = $post['Upvotes'];
 		$Downvotes = $post['Downvotes'];
-
 		$paragraphs = explode("\n", $Text);
-
 		if (substr($Link, 0, 7) != "http://")
 			$Link = "http://" . $Link;
 	}
@@ -55,18 +42,14 @@
 		echo "<br><a href=\"login.php\">Go Back</a> </li>";
 		die();
 	}
-
 	$query2 = $dbh->prepare('SELECT * FROM user, (SELECT * FROM Comment WHERE idPost = ?) as comments where user.idUser = comments.idUser');
 	$status2 = $query2->execute(array($idPost));
-
 	if (!$status2)
 	{
 		echo "\nPDO::errorInfo():\n";
 		print_r($dbh->errorInfo());
-
 		echo "Error!<br>";
 	}
-
 	$comments = $query2->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -108,23 +91,26 @@
 			<article>
 				<header>
 					<h1>
-						<a href="<?=$Link?>"><?=$Title?></a>
+						<?php if ($Link != "http://")
+								  echo "<a href=\"$Link\">$Title</a>";
+							  else
+							  	  echo "$Title"; ?>
 					</h1>
 
 				</header>
 
-				Submited on <?= date('H:i:s Y-m-d', $Date)?> <a href="profile.php?id=<?= $idUser ?>" class='submitter'><?=$username?></a><br><br>
+				Submited on <?= date('H:i:s Y-m-d', $Date)?> by <a href="profile.php?id=<?= $idUser ?>" class='submitter'><?=$username?></a><br><br>
 
 				<div class="post-votes">
 					<div class='ball up' >
 						<button onclick='upVote(<?=$idPost?>)' id='upVote()'>
-							<img src="./upvote.jpg">
+							<img src="./images/upvote.jpg">
 						</button>
 					</div>
 					<div id="numberOfVotesPost<?=$idPost?>"><?= $Upvotes-$Downvotes?></div>
 					<div class='ball down' id='downvote()'>
 						<button onclick='downVote(<?=$idPost?>)' id='downVote()'>
-							<img src="./downvote1.png">
+							<img src="images/downvote1.png">
 						</button>
 					</div>
 				</div>
@@ -145,13 +131,13 @@
 					<div class="comment-votes">
 						<div class='ball up' >
 							<button onclick='upVoteComment(<?=$comment['idComment']?>)' id='upVoteComment()'>
-								<img src="./upvote.jpg">
+								<img src="./images/upvote.jpg">
 							</button>
 						</div>
 						<div id="numberOfVotesComment<?=$comment['idComment']?>"><?=$comment['Upvotes']-$comment['Downvotes']?></div>
 						<div class='ball down' id='downvote()'>
 							<button onclick='downVoteComment(<?=$comment['idComment']?>)' id='downVoteComment()'>
-								<img src="./downvote1.png">
+								<img src="images/downvote1.png">
 							</button>
 						</div>
 					</div>

@@ -26,8 +26,8 @@
 	}
 	else if (count($results) == 0)
 	{
-		echo "Login failed!<br>";
-		echo "<br><a href=\"login.html\">Go Back</a> </li>";
+		header("Location: login.html");
+		die();
 	}
 	else
 	{

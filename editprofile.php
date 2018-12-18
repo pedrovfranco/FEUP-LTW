@@ -25,8 +25,6 @@
 	$email = $row['email'];
 	$pic = $row['pic'];
 
-	echo "$id | $username | $password | $age | $email | $pic<br>";
-
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +91,7 @@
 
 	<div class="returnProfile">
 	<a href="index.php">
-		<img src="./12th.png">
+		<img src="images/12th.png">
 	</a>
 	</div>
 

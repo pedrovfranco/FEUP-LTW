@@ -43,16 +43,12 @@
 	<nav class='posts'>
 		<div class = "logo">
 			<a href="./index.php">
-				<img src='./12th.png'>
+				<img src='images/12th.png'>
 			</a>
 		</div>
 		<div class= "posts2">
 			<ul>
-				<li><a href="#a">Best Skills</a></li>
-				<li><a href=#b>Best Goals</a></li>
-				<li><a href=#c>Worst Tackles </a></li>
-				<li><a href=#d>Funny Moments </a></li>
-				<li><a href=#e>Éder = God </a></li>
+				<li><a href="https://www.youtube.com/watch?v=l_tei_oqlwY">Éder = God </a></li>
 			</ul>
 		</div>
 		<div class="profileInPosts">

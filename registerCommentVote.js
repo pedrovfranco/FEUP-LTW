@@ -20,7 +20,7 @@ function registerCommentVote(idComment, voteType)
 			if (this.responseText.substring(0, 6) == "Error.")
 				alert(this.responseText.substring(6));
 			else
-	  			getElementById("numberOfVotesComment"+idComment).innerHTML = this.responseText;
+	  			document.getElementById("numberOfVotesComment"+idComment).innerHTML = this.responseText;
 		}
 	};
 

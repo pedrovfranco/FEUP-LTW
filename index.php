@@ -30,7 +30,6 @@
 			<?php else : ?>
 				<li class="active"> <a href="logout.php">Logout</a> </li>
 				<li class="active"> <a href="about.html">About</a> </li>
-				<li class="active"> <a href="profile.php">Profile</a> </li>
 		</ul>
     <form class="postButton" action="indextopost.php">
 			<input type="submit" value="Create Post">
@@ -43,20 +42,23 @@
 
   <div class="postIndex">
     <a href="posts.php">
-      <img src="./posts.png">
+      <img src="images/posts.png">
     </a>
   </div>
 
-  <div class="sideBar">
-  	<ul>
-  		<li class="active"><a href="profile.php">Profile</a>
-  			<ul>
-  				<li class="active"><a href="editprofile.php">Edit Profile</a></li>
-  			</ul>
-  		</li>
-  	</ul>
- </div>
-
+<?php
+	$id = loggedIn();
+	if ($id != -1) : ?>
+	  <div class="sideBar">
+	  	<ul>
+	  		<li class="active"><a href="profile.php">Profile</a>
+	  			<ul>
+	  				<li class="active"><a href="editprofile.php">Edit Profile</a></li>
+	  			</ul>
+	  		</li>
+	  	</ul>
+	 </div>
+<?php endif; ?>
 	
 	<footer>
 		<p>Page made by: Tomás Novo and João Pedro Viveiros Franco. LTW 2018/2019</p>
@@ -70,7 +72,7 @@
 	  <div class="searcher">
 			<form action="/action_page.php">
 			<input type="text" placeholder="Search.." name="search">
-				<input type="image" src="lupa.png" alt="Submit Form" width="30" height="30"/>
+				<input type="image" src="images/lupa.png" alt="Submit Form" width="30" height="30"/>
 		 </form>
 	  </div>
 	</div>-->
